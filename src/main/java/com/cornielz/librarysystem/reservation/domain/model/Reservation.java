@@ -36,6 +36,34 @@ public class Reservation {
 
     // Setters
 
+    public void changeUser(UUID newUserId){
+        this.userId = newUserId;
+    }
+
+    public void changeBook(UUID newBookId){
+        this.bookId = newBookId;
+    }
+
+    public void updateBorrowingDate(LocalDateTime newBorrowingDate){
+        this.borrowingDate = newBorrowingDate;
+    }
+
+    public void updateExpectedReturnDate(LocalDateTime newExpectedReturnDate){
+        this.expectedReturnDate = newExpectedReturnDate;
+    }
+
+    public void updateReturnDate(LocalDateTime newReturnDate){
+        this.returnDate = newReturnDate;
+    }
+
+    public void modifyAppliedPrice(BigDecimal newAppliedPrice){
+        this.appliedPrice = newAppliedPrice;
+    }
+
+    public void updateReservationStatus(ReservationStatus newReservationStatus){
+        this.status = newReservationStatus;
+    }
+
     // Getters
 
     public UUID getId() {
