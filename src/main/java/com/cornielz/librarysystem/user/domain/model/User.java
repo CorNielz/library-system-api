@@ -32,6 +32,30 @@ public class User {
 
     // Setters
 
+    public void rename(String newName) {
+        this.name = newName;
+    }
+
+    public void changeNickname(String newNickname) {
+        this.nickname = newNickname;
+    }
+
+    public void updateEmail(String newEmail) {
+        this.email = newEmail;
+    }
+
+    public void updatePassword(byte[] newHashedPassword) {
+        this.hashedPassword = newHashedPassword;
+    }
+
+    public void updateStatus(UserStatus newStatus) {
+        this.status = newStatus;
+    }
+
+    public void assignNewRole(UUID newRoleId) {
+        this.roleId = newRoleId;
+    }
+
     // Getters
 
     public UUID getId() {
