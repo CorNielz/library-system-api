@@ -23,4 +23,33 @@ public class Review {
         this.comment = comment;
         this.score = score;
     }
+
+    // Setters
+
+    // Getters
+
+
+    public UUID getId() {
+        return id;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public UUID getBookId() {
+        return bookId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
 }
