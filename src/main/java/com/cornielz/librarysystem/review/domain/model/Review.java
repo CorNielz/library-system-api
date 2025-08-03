@@ -26,6 +26,18 @@ public class Review {
 
     // Setters
 
+    public void updateTitle(String newTitle) {
+        this.title = newTitle;
+    }
+
+    public void updateComment(String newComment) {
+        this.comment = newComment;
+    }
+
+    public void updateScore(Integer newScore) {
+        this.score = newScore;
+    }
+
     // Getters
 
 
