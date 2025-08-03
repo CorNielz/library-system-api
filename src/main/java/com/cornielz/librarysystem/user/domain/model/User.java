@@ -29,4 +29,36 @@ public class User {
 
         this.roleId = roleId;
     }
+
+    // Setters
+
+    // Getters
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public byte[] getHashedPassword() {
+        return hashedPassword;
+    }
+
+    public UserStatus  getStatus() {
+        return status;
+    }
+
+    public UUID getRoleId() {
+        return roleId;
+    }
 }
