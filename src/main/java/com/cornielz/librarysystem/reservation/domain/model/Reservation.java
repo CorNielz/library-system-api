@@ -33,4 +33,40 @@ public class Reservation {
 
         this.status = status;
     }
+
+    // Setters
+
+    // Getters
+
+    public UUID getId() {
+        return id;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public UUID getBookId() {
+        return bookId;
+    }
+
+    public LocalDateTime getBorrowingDate() {
+        return borrowingDate;
+    }
+
+    public LocalDateTime getExpectedReturnDate() {
+        return expectedReturnDate;
+    }
+
+    public LocalDateTime getReturnDate() {
+        return returnDate;
+    }
+
+    public BigDecimal getAppliedPrice() {
+        return appliedPrice;
+    }
+
+    public ReservationStatus getStatus() {
+        return status;
+    }
 }
