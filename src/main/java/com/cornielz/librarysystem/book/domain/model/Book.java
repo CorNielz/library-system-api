@@ -33,4 +33,40 @@ public class Book {
 
         this.status = status;
     }
+
+    // Setters
+
+    // Getters
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public LocalDateTime getPublicationDate() {
+        return publicationDate;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public BookCondition condition{
+        return condition
+    }
+
+    public BookStatus getStatus() {
+        return status;
+    }
 }
