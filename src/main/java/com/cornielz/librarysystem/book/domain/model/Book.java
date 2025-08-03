@@ -36,6 +36,34 @@ public class Book {
 
     // Setters
 
+    public void rename(String newTitle){
+        this.title = newTitle;
+    }
+
+    public void rewriteDescription(String newDescription){
+        this.description = newDescription;
+    }
+
+    public void updateLanguage(String newLanguage){
+        this.language = newLanguage;
+    }
+
+    public void updatePublicationDate(LocalDateTime newPublicationDate){
+        this.publicationDate = newPublicationDate;
+    }
+
+    public void updatePrice(BigDecimal newPrice){
+        this.price = newPrice;
+    }
+
+    public void updateBookCondition(BookCondition newBookCondition){
+        this.condition = newBookCondition;
+    }
+
+    public void updateBookStatus(BookStatus newBookStatus){
+        this.status = newBookStatus;
+    }
+
     // Getters
 
     public UUID getId() {
@@ -62,8 +90,8 @@ public class Book {
         return price;
     }
 
-    public BookCondition condition{
-        return condition
+    public BookCondition getCondition() {
+        return condition;
     }
 
     public BookStatus getStatus() {
