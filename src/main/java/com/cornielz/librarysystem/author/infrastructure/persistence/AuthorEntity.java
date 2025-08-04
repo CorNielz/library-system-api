@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.persistence.author;
+package com.cornielz.librarysystem.infrastructure.author;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -15,7 +15,7 @@ public class AuthorEntity {
     @Column(length = 100, nullable = false)
     private String name;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "TEXT")
     private String bios;
 
     @Column(name = "birth_date")
