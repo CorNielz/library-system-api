@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import com.cornielz.librarysystem.domain.author.AuthorStatus;
+import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
 
 public record AuthorCreationRequestDTO(
         @NotBlank @Size(max = 100) String name,

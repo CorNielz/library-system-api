@@ -1,7 +1,7 @@
 package com.cornielz.librarysystem.user.application.services;
 
-import com.cornielz.librarysystem.domain.user.User;
-import com.cornielz.librarysystem.domain.user.UserRepository;
+import com.cornielz.librarysystem.user.domain.model.User;
+import com.cornielz.librarysystem.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
