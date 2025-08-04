@@ -12,8 +12,8 @@ public class Review {
 
     private final UUID id;
 
-    private UUID userId;
-    private UUID bookId;
+    private final UUID userId;
+    private final UUID bookId;
 
     private String title;
     private String comment;
