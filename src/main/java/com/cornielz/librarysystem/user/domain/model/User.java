@@ -6,6 +6,7 @@ import java.util.UUID;
 public class User {
     private static final String NAME_REGEX = "^[\\p{L}]+([ '-][\\p{L}]+)*$";
     private static final String NICKNAME_REGEX = "^(.|\\s)*[a-zA-Z]+(.|\\s)*$";
+    private static final String EMAIL_REGEX = "^(?!\\.)(?!.*\\.\\.)([a-z0-9_'+\\-.]*)[a-z0-9_'+\\-]@([a-z0-9][a-z0-9\\-]*\\.)+[a-z]{2,}$"
 
     private static final int MAX_NAME_LENGTH = 100;
     private static final int MAX_NICKNAME_LENGTH = 32;
@@ -85,10 +86,16 @@ public class User {
         if (email == null || email.isBlank()) {
             throw new IllegalArgumentException("Email cannot be null or blank");
         }
+
+        if (!email.matches(EMAIL_REGEX)){
+            throw new IllegalArgumentException("Email must be in valid format");
+        }
     }
 
     private void validateHashedPassword(byte[] hashedPassword) {
-
+        if (hashedPassword == null) {
+            throw new IllegalArgumentException("Hashed password cannot be null");
+        }
     }
 
     private void validateStatus(UserStatus status){
