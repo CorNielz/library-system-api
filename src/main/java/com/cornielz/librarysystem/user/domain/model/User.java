@@ -6,7 +6,7 @@ import java.util.UUID;
 public class User {
     private static final String NAME_REGEX = "^[\\p{L}]+([ '-][\\p{L}]+)*$";
     private static final String NICKNAME_REGEX = "^(.|\\s)*[a-zA-Z]+(.|\\s)*$";
-    private static final String EMAIL_REGEX = "^(?!\\.)(?!.*\\.\\.)([a-z0-9_'+\\-.]*)[a-z0-9_'+\\-]@([a-z0-9][a-z0-9\\-]*\\.)+[a-z]{2,}$"
+    private static final String EMAIL_REGEX = "^(?!\\.)(?!.*\\.\\.)([a-z0-9_'+\\-.]*)[a-z0-9_'+\\-]@([a-z0-9][a-z0-9\\-]*\\.)+[a-z]{2,}$";
 
     private static final int MAX_NAME_LENGTH = 100;
     private static final int MAX_NICKNAME_LENGTH = 32;
@@ -73,11 +73,11 @@ public class User {
             throw new IllegalArgumentException("Nickname cannot be null or blank");
         }
 
-        if (nickname.length() > MAX_NAME_LENGTH) {
+        if (nickname.length() > MAX_NICKNAME_LENGTH) {
             throw new IllegalArgumentException(String.format("Nickname cannot exceed %s characters", MAX_NICKNAME_LENGTH));
         }
 
-        if (!nickname.matches(NAME_REGEX)){
+        if (!nickname.matches(NICKNAME_REGEX)){
             throw new IllegalArgumentException("Nickname cannot contain illegal characters");
         }
     }
@@ -85,6 +85,10 @@ public class User {
     private void validateEmail(String email) {
         if (email == null || email.isBlank()) {
             throw new IllegalArgumentException("Email cannot be null or blank");
+        }
+
+        if (email.length() > MAX_EMAIL_LENGTH) {
+            throw new IllegalArgumentException(String.format("Email cannot exceed %s characters", MAX_EMAIL_LENGTH));
         }
 
         if (!email.matches(EMAIL_REGEX)){
@@ -107,26 +111,32 @@ public class User {
     // Setters
 
     public void rename(String newName) {
+        validateName(newName);
         this.name = newName;
     }
 
     public void changeNickname(String newNickname) {
+        validateNickname(newNickname);
         this.nickname = newNickname;
     }
 
     public void updateEmail(String newEmail) {
+        validateEmail(newEmail);
         this.email = newEmail;
     }
 
     public void updatePassword(byte[] newHashedPassword) {
+        validateHashedPassword(newHashedPassword);
         this.hashedPassword = newHashedPassword;
     }
 
     public void updateStatus(UserStatus newStatus) {
+        validateStatus(newStatus);
         this.status = newStatus;
     }
 
     public void assignNewRole(UUID newRoleId) {
+        validateId(newRoleId);
         this.roleId = newRoleId;
     }
 
