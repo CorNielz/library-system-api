@@ -1,7 +1,10 @@
 package com.cornielz.librarysystem.reservation.application.services;
 
-import com.cornielz.librarysystem.domain.reservation.Reservation;
-import com.cornielz.librarysystem.domain.reservation.ReservationRepository;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
+import com.cornielz.librarysystem.reservation.domain.model.Reservation;
+import com.cornielz.librarysystem.reservation.domain.repository.ReservationRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,7 +35,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void delete(UUID id) {
-        repository.deleteById(id);
+        repository.delete(id);
     }
 
     @Override

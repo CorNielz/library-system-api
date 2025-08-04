@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 import jakarta.persistence.*;
-import com.cornielz.librarysystem.domain.author.AuthorStatus;
+import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
 
 @Entity
 @Table(name = "authors")

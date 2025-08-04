@@ -1,5 +1,9 @@
 package com.cornielz.librarysystem.reservation.api.controller;
 
+import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
+
 @RestController
 @RequestMapping("/api/reservations")
 @RequiredArgsConstructor

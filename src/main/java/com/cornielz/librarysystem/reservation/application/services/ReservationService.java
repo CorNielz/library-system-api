@@ -2,6 +2,9 @@ package com.cornielz.librarysystem.reservation.application.services;
 
 import java.util.List;
 import java.util.UUID;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
 
 public interface ReservationService {
     ReservationResponseDTO create(ReservationCreationRequestDTO request);

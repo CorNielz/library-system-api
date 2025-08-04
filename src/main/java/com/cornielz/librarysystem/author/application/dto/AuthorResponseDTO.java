@@ -2,7 +2,7 @@ package com.cornielz.librarysystem.author.application.dto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import com.cornielz.librarysystem.domain.author.AuthorStatus;
+import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
 
 public record AuthorResponseDTO(
         UUID id,

@@ -1,5 +1,7 @@
 package com.cornielz.librarysystem.reservation.domain.repository;
 
+import com.cornielz.librarysystem.reservation.domain.model.Reservation;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

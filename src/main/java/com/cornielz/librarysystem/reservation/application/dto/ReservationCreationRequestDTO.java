@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import com.cornielz.librarysystem.domain.reservation.ReservationStatus;
+import com.cornielz.librarysystem.reservation.domain.model.ReservationStatus;
 
 public record ReservationCreationRequestDTO(
         @NotNull UUID userId,

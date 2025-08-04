@@ -1,6 +1,5 @@
 package com.cornielz.librarysystem.user.domain.model;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class User {

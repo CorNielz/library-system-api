@@ -1,11 +1,10 @@
 package com.cornielz.librarysystem.user.application.dto;
 
-import java.util.UUID;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import com.cornielz.librarysystem.domain.user.UserStatus;
+import com.cornielz.librarysystem.user.domain.model.UserStatus;
 
 public record UserCreationRequestDTO(
         @NotBlank @Size(max = 100) String name,

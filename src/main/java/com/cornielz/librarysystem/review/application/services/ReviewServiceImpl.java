@@ -1,7 +1,10 @@
 package com.cornielz.librarysystem.review.application.services;
 
-import com.cornielz.librarysystem.domain.review.Review;
-import com.cornielz.librarysystem.domain.review.ReviewRepository;
+import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
+import com.cornielz.librarysystem.review.domain.model.Review;
+import com.cornielz.librarysystem.review.domain.repository.ReviewRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -38,6 +41,16 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public ReviewResponseDTO getById(UUID id) {
         return repository.findById(id).map(this::toDTO).orElse(null);
+    }
+
+    @Override
+    public List<ReviewResponseDTO> listAll() {
+        return List.of();
+    }
+
+    @Override
+    public List<ReviewResponseDTO> listByBookId(UUID bookId) {
+        return List.of();
     }
 
     @Override

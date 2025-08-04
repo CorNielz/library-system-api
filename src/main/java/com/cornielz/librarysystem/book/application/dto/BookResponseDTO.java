@@ -3,8 +3,8 @@ package com.cornielz.librarysystem.book.application.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import com.cornielz.librarysystem.domain.book.BookCondition;
-import com.cornielz.librarysystem.domain.book.BookStatus;
+import com.cornielz.librarysystem.book.domain.model.BookCondition;
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
 
 public record BookResponseDTO(
         UUID id,

@@ -7,8 +7,8 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import com.cornielz.librarysystem.domain.book.BookCondition;
-import com.cornielz.librarysystem.domain.book.BookStatus;
+import com.cornielz.librarysystem.book.domain.model.BookCondition;
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
 
 public record BookUpdateRequestDTO(
         @NotNull UUID id,

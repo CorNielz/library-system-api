@@ -1,10 +1,9 @@
 package com.cornielz.librarysystem.user.infrastructure.persistence;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 import jakarta.persistence.*;
-import com.cornielz.librarysystem.domain.user.UserStatus;
+import com.cornielz.librarysystem.user.domain.model.UserStatus;
 
 @Entity
 @Table(name = "users")

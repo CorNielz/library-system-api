@@ -2,7 +2,6 @@ package com.cornielz.librarysystem.reservation.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
 public class Reservation {

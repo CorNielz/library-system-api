@@ -1,9 +1,9 @@
 package com.cornielz.librarysystem.book.infrastructure.repository;
 
-import com.cornielz.librarysystem.domain.book.Book;
+import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.UUID;
+import com.cornielz.librarysystem.book.infrastructure.persistence.BookEntity;
 
 public interface SpringDataBookRepository extends JpaRepository<BookEntity, UUID> {
 

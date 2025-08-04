@@ -2,11 +2,10 @@ package com.cornielz.librarysystem.book.infrastructure.persistence;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 import jakarta.persistence.*;
-import com.cornielz.librarysystem.domain.book.BookCondition;
-import com.cornielz.librarysystem.domain.book.BookStatus;
+import com.cornielz.librarysystem.book.domain.model.BookCondition;
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
 
 @Entity
 @Table(name = "books")

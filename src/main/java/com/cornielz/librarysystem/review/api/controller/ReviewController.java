@@ -1,5 +1,12 @@
 package com.cornielz.librarysystem.review.api.controller;
 
+import java.util.List;
+import java.util.UUID;
+import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
+import com.cornielz.librarysystem.review.application.services.ReviewService;
+
 @RestController
 @RequestMapping("/api/reviews")
 @RequiredArgsConstructor

@@ -1,6 +1,5 @@
 package com.cornielz.librarysystem.review.domain.model;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class Review {

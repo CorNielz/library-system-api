@@ -3,7 +3,7 @@ package com.cornielz.librarysystem.reservation.application.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import com.cornielz.librarysystem.domain.reservation.ReservationStatus;
+import com.cornielz.librarysystem.reservation.domain.model.ReservationStatus;
 
 public record ReservationResponseDTO(
         UUID id,

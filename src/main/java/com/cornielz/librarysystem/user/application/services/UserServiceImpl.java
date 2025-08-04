@@ -1,5 +1,8 @@
 package com.cornielz.librarysystem.user.application.services;
 
+import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
+import com.cornielz.librarysystem.user.application.dto.UserResponseDTO;
+import com.cornielz.librarysystem.user.application.dto.UserUpdateRequestDTO;
 import com.cornielz.librarysystem.user.domain.model.User;
 import com.cornielz.librarysystem.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -34,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(UUID id) {
-        repository.deleteById(id);
+        repository.markAsDeleted(id);
     }
 
     @Override

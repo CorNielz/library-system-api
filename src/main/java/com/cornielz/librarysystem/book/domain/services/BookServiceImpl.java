@@ -1,11 +1,13 @@
 package com.cornielz.librarysystem.book.domain.services;
 
-import com.cornielz.librarysystem.domain.book.Book;
-import com.cornielz.librarysystem.domain.book.BookRepository;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import com.cornielz.librarysystem.book.domain.model.Book;
+import com.cornielz.librarysystem.book.domain.repository.BookRepository;
+import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
+import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;
+import com.cornielz.librarysystem.book.application.dto.BookUpdateRequestDTO;
 
 public class BookServiceImpl implements BookService {
 
@@ -32,7 +34,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void delete(UUID id) {
-        repository.deleteById(id);
+        repository.markAsDeleted(id);
     }
 
     @Override

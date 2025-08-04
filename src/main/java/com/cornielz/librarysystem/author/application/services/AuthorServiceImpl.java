@@ -1,7 +1,7 @@
 package com.cornielz.librarysystem.author.application.services;
 
-import com.cornielz.librarysystem.domain.author.Author;
-import com.cornielz.librarysystem.domain.author.AuthorRepository;
+import com.cornielz.librarysystem.author.domain.model.Author;
+import com.cornielz.librarysystem.author.domain.repository.AuthorRepository;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,5 +1,10 @@
 package com.cornielz.librarysystem.author.api.controller;
 
+import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
+import com.cornielz.librarysystem.author.application.services.AuthorService;
+
 @RestController
 @RequestMapping("/api/authors")
 @RequiredArgsConstructor
