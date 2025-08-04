@@ -1,8 +1,9 @@
 package com.cornielz.librarysystem.author.application.dto;
 
+import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
-import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
 
 public record AuthorResponseDTO(
         UUID id,
@@ -11,4 +12,5 @@ public record AuthorResponseDTO(
         LocalDateTime birthDate,
         String nationality,
         AuthorStatus status
-) {}
+) {
+}

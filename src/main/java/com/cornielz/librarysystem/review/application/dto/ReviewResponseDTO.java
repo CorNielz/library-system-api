@@ -9,4 +9,5 @@ public record ReviewResponseDTO(
         String title,
         String comment,
         int score
-) {}
+) {
+}

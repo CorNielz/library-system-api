@@ -77,7 +77,7 @@ public class Reservation {
         if (returnDate == null) {
             return;
         }
-        
+
         if (returnDate.isBefore(borrowingDate)) {
             throw new IllegalArgumentException("Return date cannot be before borrowing date");
         }
@@ -101,7 +101,7 @@ public class Reservation {
         }
     }
 
-    private void validateStatus(ReservationStatus status){
+    private void validateStatus(ReservationStatus status) {
         if (status == null) {
             throw new IllegalArgumentException("Status cannot be null");
         }
@@ -109,37 +109,37 @@ public class Reservation {
 
     // Setters
 
-    public void changeUser(UUID newUserId){
+    public void changeUser(UUID newUserId) {
         validateId(newUserId);
         this.userId = newUserId;
     }
 
-    public void changeBook(UUID newBookId){
+    public void changeBook(UUID newBookId) {
         validateId(newBookId);
         this.bookId = newBookId;
     }
 
-    public void updateBorrowingDate(LocalDateTime newBorrowingDate){
+    public void updateBorrowingDate(LocalDateTime newBorrowingDate) {
         validateBorrowingDate(newBorrowingDate);
         this.borrowingDate = newBorrowingDate;
     }
 
-    public void updateExpectedReturnDate(LocalDateTime newExpectedReturnDate){
+    public void updateExpectedReturnDate(LocalDateTime newExpectedReturnDate) {
         validateExpectedReturnDate(newExpectedReturnDate, this.borrowingDate);
         this.expectedReturnDate = newExpectedReturnDate;
     }
 
-    public void updateReturnDate(LocalDateTime newReturnDate){
+    public void updateReturnDate(LocalDateTime newReturnDate) {
         validateReturnDate(newReturnDate, this.borrowingDate);
         this.returnDate = newReturnDate;
     }
 
-    public void modifyAppliedPrice(BigDecimal newAppliedPrice){
+    public void modifyAppliedPrice(BigDecimal newAppliedPrice) {
         validateAppliedPrice(newAppliedPrice);
         this.appliedPrice = newAppliedPrice;
     }
 
-    public void updateReservationStatus(ReservationStatus newReservationStatus){
+    public void updateReservationStatus(ReservationStatus newReservationStatus) {
         validateStatus(newReservationStatus);
         this.status = newReservationStatus;
     }

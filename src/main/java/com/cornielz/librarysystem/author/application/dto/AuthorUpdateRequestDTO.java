@@ -1,11 +1,12 @@
 package com.cornielz.librarysystem.author.application.dto;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record AuthorUpdateRequestDTO(
         @NotNull UUID id,
@@ -14,4 +15,5 @@ public record AuthorUpdateRequestDTO(
         @NotNull LocalDateTime birthDate,
         @NotBlank @Size(max = 32) String nationality,
         @NotNull AuthorStatus status
-) {}
+) {
+}

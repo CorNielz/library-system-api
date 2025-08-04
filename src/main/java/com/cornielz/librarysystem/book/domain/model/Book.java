@@ -66,7 +66,7 @@ public class Book {
             throw new IllegalArgumentException(String.format("Title cannot exceed %s characters", MAX_TITLE_LENGTH));
         }
 
-        if (!title.matches(TITLE_REGEX)){
+        if (!title.matches(TITLE_REGEX)) {
             throw new IllegalArgumentException("Title cannot contain illegal characters");
         }
     }
@@ -76,7 +76,7 @@ public class Book {
             return;
         }
 
-        if (!description.matches(DESCRIPTION_REGEX)){
+        if (!description.matches(DESCRIPTION_REGEX)) {
             throw new IllegalArgumentException("Description cannot contain illegal characters");
         }
     }
@@ -121,13 +121,13 @@ public class Book {
         }
     }
 
-    private void validateCondition(BookCondition condition){
+    private void validateCondition(BookCondition condition) {
         if (condition == null) {
             throw new IllegalArgumentException("Condition cannot be null");
         }
     }
 
-    private void validateStatus(BookStatus status){
+    private void validateStatus(BookStatus status) {
         if (status == null) {
             throw new IllegalArgumentException("Status cannot be null");
         }
@@ -135,37 +135,37 @@ public class Book {
 
     // Setters
 
-    public void rename(String newTitle){
+    public void rename(String newTitle) {
         validateTitle(newTitle);
         this.title = newTitle;
     }
 
-    public void rewriteDescription(String newDescription){
+    public void rewriteDescription(String newDescription) {
         validateDescription(newDescription);
         this.description = newDescription;
     }
 
-    public void updateLanguage(String newLanguage){
+    public void updateLanguage(String newLanguage) {
         validateLanguage(newLanguage);
         this.language = newLanguage;
     }
 
-    public void updatePublicationDate(LocalDateTime newPublicationDate){
+    public void updatePublicationDate(LocalDateTime newPublicationDate) {
         validatePublicationDate(newPublicationDate);
         this.publicationDate = newPublicationDate;
     }
 
-    public void updatePrice(BigDecimal newPrice){
+    public void updatePrice(BigDecimal newPrice) {
         validatePrice(newPrice);
         this.price = newPrice;
     }
 
-    public void updateBookCondition(BookCondition newBookCondition){
+    public void updateBookCondition(BookCondition newBookCondition) {
         validateCondition(newBookCondition);
         this.condition = newBookCondition;
     }
 
-    public void updateBookStatus(BookStatus newBookStatus){
+    public void updateBookStatus(BookStatus newBookStatus) {
         validateStatus(newBookStatus);
         this.status = newBookStatus;
     }

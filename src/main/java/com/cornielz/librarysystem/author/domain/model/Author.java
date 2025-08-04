@@ -1,7 +1,6 @@
 package com.cornielz.librarysystem.author.domain.model;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
 public class Author {
@@ -18,7 +17,7 @@ public class Author {
 
     private LocalDateTime birthDate;
     private String nationality;
-    
+
     public Author(UUID id, String name, String bios, LocalDateTime birthDate, String nationality) {
         this.id = id;
 
@@ -44,7 +43,7 @@ public class Author {
             throw new IllegalArgumentException("Name cannot exceed 100 characters");
         }
 
-        if (!name.matches(NAME_REGEX)){
+        if (!name.matches(NAME_REGEX)) {
             throw new IllegalArgumentException("Name cannot contain illegal characters");
         }
     }
@@ -83,22 +82,22 @@ public class Author {
 
     // Setters
 
-    public void rename(String newName){
+    public void rename(String newName) {
         validateName(newName);
         this.name = newName;
     }
 
-    public void rewriteBios(String newBios){
+    public void rewriteBios(String newBios) {
         validateBios(newBios);
         this.bios = newBios;
     }
 
-    public void changeBirthDate(LocalDateTime newBirthDate){
+    public void changeBirthDate(LocalDateTime newBirthDate) {
         validateBirthDate(newBirthDate);
         this.birthDate = newBirthDate;
     }
 
-    public void changeNationality(String newNationality){
+    public void changeNationality(String newNationality) {
         validateNationality(newNationality);
         this.nationality = newNationality;
     }

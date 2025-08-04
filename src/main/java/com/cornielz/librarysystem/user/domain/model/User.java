@@ -62,7 +62,7 @@ public class User {
             throw new IllegalArgumentException(String.format("Name cannot exceed %s characters", MAX_NAME_LENGTH));
         }
 
-        if (!name.matches(NAME_REGEX)){
+        if (!name.matches(NAME_REGEX)) {
             throw new IllegalArgumentException("Name cannot contain illegal characters");
         }
     }
@@ -76,7 +76,7 @@ public class User {
             throw new IllegalArgumentException(String.format("Nickname cannot exceed %s characters", MAX_NICKNAME_LENGTH));
         }
 
-        if (!nickname.matches(NICKNAME_REGEX)){
+        if (!nickname.matches(NICKNAME_REGEX)) {
             throw new IllegalArgumentException("Nickname cannot contain illegal characters");
         }
     }
@@ -90,7 +90,7 @@ public class User {
             throw new IllegalArgumentException(String.format("Email cannot exceed %s characters", MAX_EMAIL_LENGTH));
         }
 
-        if (!email.matches(EMAIL_REGEX)){
+        if (!email.matches(EMAIL_REGEX)) {
             throw new IllegalArgumentException("Email must be in valid format");
         }
     }
@@ -101,7 +101,7 @@ public class User {
         }
     }
 
-    private void validateStatus(UserStatus status){
+    private void validateStatus(UserStatus status) {
         if (status == null) {
             throw new IllegalArgumentException("Status cannot be null");
         }
@@ -161,7 +161,7 @@ public class User {
         return hashedPassword;
     }
 
-    public UserStatus  getStatus() {
+    public UserStatus getStatus() {
         return status;
     }
 
