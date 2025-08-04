@@ -18,6 +18,7 @@ public class AuthorController {
     @GetMapping("/{id}")
     public ResponseEntity<AuthorResponseDTO> getAuthor(@PathVariable UUID id) {
         return ResponseEntity.ok(authorService.getById(id));
+        return ResponseEntity.ok(authorService.getById(id));
     }
 
     @GetMapping
