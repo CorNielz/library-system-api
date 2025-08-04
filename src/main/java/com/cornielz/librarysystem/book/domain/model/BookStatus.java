@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.domain.book;
+package com.cornielz.librarysystem.book.domain.model;
 
 public enum BookStatus  {
     AVAILABLE,

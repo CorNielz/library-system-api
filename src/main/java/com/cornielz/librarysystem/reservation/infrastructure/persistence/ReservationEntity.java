@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.reservation;
+package com.cornielz.librarysystem.reservation.infrastructure.persistence;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

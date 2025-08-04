@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.domain.reservation;
+package com.cornielz.librarysystem.reservation.domain.repository;
 
 import java.util.List;
 import java.util.Optional;

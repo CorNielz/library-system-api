@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.book;
+package com.cornielz.librarysystem.book.domain.services;
 
 import java.util.List;
 import java.util.UUID;

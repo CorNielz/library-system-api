@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.domain.author;
+package com.cornielz.librarysystem.author.domain.repository;
 
 import java.util.List;
 import java.util.Optional;

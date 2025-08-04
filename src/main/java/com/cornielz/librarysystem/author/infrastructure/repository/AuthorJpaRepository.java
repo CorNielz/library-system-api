@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.author;
+package com.cornielz.librarysystem.author.infrastructure.repository;
 
 import com.cornielz.librarysystem.domain.author.Author;
 import org.springframework.data.jpa.repository.JpaRepository;

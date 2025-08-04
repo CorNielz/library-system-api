@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.reservation;
+package com.cornielz.librarysystem.reservation.application.services;
 
 import com.cornielz.librarysystem.domain.reservation.Reservation;
 import com.cornielz.librarysystem.domain.reservation.ReservationRepository;

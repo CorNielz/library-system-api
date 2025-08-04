@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.domain.review;
+package com.cornielz.librarysystem.review.domain.repository;
 
 import java.util.List;
 import java.util.Optional;

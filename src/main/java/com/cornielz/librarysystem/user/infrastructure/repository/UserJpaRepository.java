@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.user;
+package com.cornielz.librarysystem.user.infrastructure.repository;
 
 import com.cornielz.librarysystem.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;

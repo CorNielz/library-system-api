@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.domain.user;
+package com.cornielz.librarysystem.user.domain.model;
 
 import java.util.Objects;
 import java.util.UUID;

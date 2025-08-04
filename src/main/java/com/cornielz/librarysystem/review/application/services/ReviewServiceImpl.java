@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.review;
+package com.cornielz.librarysystem.review.application.services;
 
 import com.cornielz.librarysystem.domain.review.Review;
 import com.cornielz.librarysystem.domain.review.ReviewRepository;

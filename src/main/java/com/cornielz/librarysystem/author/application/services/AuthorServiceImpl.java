@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.author;
+package com.cornielz.librarysystem.author.application.services;
 
 import com.cornielz.librarysystem.domain.author.Author;
 import com.cornielz.librarysystem.domain.author.AuthorRepository;

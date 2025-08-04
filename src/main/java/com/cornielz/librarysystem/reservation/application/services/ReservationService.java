@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.reservation;
+package com.cornielz.librarysystem.reservation.application.services;
 
 import java.util.List;
 import java.util.UUID;

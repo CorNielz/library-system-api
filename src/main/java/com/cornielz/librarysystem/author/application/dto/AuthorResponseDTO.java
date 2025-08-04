@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.author;
+package com.cornielz.librarysystem.author.application.dto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

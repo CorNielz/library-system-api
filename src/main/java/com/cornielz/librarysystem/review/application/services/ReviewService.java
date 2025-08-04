@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.review;
+package com.cornielz.librarysystem.review.application.services;
 
 import java.util.List;
 import java.util.UUID;

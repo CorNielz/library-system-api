@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.reservation;
+package com.cornielz.librarysystem.reservation.infrastructure.repository;
 
 import com.cornielz.librarysystem.domain.reservation.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;

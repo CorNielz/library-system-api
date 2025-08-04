@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.domain.author;
+package com.cornielz.librarysystem.author.domain.model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

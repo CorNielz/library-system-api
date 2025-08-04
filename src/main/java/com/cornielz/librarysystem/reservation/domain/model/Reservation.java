@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.domain.reservation;
+package com.cornielz.librarysystem.reservation.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

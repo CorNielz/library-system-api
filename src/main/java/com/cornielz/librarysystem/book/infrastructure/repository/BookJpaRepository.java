@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.book;
+package com.cornielz.librarysystem.book.infrastructure.repository;
 
 import com.cornielz.librarysystem.domain.book.Book;
 import org.springframework.data.jpa.repository.JpaRepository;

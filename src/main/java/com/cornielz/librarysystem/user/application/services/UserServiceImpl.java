@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.user;
+package com.cornielz.librarysystem.user.application.services;
 
 import com.cornielz.librarysystem.domain.user.User;
 import com.cornielz.librarysystem.domain.user.UserRepository;

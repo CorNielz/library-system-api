@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.book;
+package com.cornielz.librarysystem.book.application.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

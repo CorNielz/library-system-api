@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.author;
+package com.cornielz.librarysystem.author.application.services;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.review;
+package com.cornielz.librarysystem.review.infrastructure.repository;
 
 import com.cornielz.librarysystem.domain.review.Review;
 import org.springframework.data.jpa.repository.JpaRepository;

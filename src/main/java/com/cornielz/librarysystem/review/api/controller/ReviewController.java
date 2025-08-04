@@ -1,3 +1,5 @@
+package com.cornielz.librarysystem.review.api.controller;
+
 @RestController
 @RequestMapping("/api/reviews")
 @RequiredArgsConstructor

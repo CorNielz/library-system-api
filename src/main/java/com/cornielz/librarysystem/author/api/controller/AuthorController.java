@@ -1,3 +1,5 @@
+package com.cornielz.librarysystem.author.api.controller;
+
 @RestController
 @RequestMapping("/api/authors")
 @RequiredArgsConstructor

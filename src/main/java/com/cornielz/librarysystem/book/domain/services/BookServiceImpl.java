@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.book;
+package com.cornielz.librarysystem.book.domain.services;
 
 import com.cornielz.librarysystem.domain.book.Book;
 import com.cornielz.librarysystem.domain.book.BookRepository;

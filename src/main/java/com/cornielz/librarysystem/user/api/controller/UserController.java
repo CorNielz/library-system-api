@@ -1,3 +1,5 @@
+package com.cornielz.librarysystem.user.api.controller;
+
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor

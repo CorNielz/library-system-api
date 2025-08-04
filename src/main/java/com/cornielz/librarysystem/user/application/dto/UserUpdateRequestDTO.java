@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.application.user;
+package com.cornielz.librarysystem.user.application.dto;
 
 import java.util.UUID;
 import jakarta.validation.constraints.Email;

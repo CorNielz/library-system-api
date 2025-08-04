@@ -1,3 +1,5 @@
+package com.cornielz.librarysystem.reservation.api.controller;
+
 @RestController
 @RequestMapping("/api/reservations")
 @RequiredArgsConstructor

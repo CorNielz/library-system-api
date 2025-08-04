@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.infrastructure.user;
+package com.cornielz.librarysystem.user.infrastructure.persistence;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
