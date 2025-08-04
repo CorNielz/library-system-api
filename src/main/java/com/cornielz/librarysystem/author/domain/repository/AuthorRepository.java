@@ -9,5 +9,5 @@ public interface AuthorRepository {
     List<Author> findAll();
 
     void save(Author author);
-    void deleteById(UUID id);
+    void markAsDeleted(UUID id);
 }
