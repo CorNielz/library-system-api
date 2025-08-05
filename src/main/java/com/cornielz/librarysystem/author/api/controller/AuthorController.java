@@ -4,6 +4,13 @@ import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDT
 import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
 import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 import com.cornielz.librarysystem.author.application.services.AuthorService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/authors")
@@ -25,12 +32,11 @@ public class AuthorController {
     @GetMapping("/{id}")
     public ResponseEntity<AuthorResponseDTO> getAuthor(@PathVariable UUID id) {
         return ResponseEntity.ok(authorService.getById(id));
-        return ResponseEntity.ok(authorService.getById(id));
     }
 
     @GetMapping
     public ResponseEntity<List<AuthorResponseDTO>> listAuthors() {
-        return ResponseEntity.ok(authorService.getAll());
+        return ResponseEntity.ok(authorService.listAll());
     }
 
     @DeleteMapping("/{id}")

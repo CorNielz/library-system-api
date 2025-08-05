@@ -1,7 +1,11 @@
 package com.cornielz.librarysystem.author.application.services;
 
+import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 import com.cornielz.librarysystem.author.domain.model.Author;
 import com.cornielz.librarysystem.author.domain.repository.AuthorRepository;
+import com.cornielz.librarysystem.author.application.services.AuthorService;
 
 import java.util.List;
 import java.util.UUID;
@@ -41,7 +45,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<AuthorResponseDTO> getAll() {
+    public List<AuthorResponseDTO> listAll() {
         return repository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 

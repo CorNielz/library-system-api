@@ -3,6 +3,14 @@ package com.cornielz.librarysystem.reservation.api.controller;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
+import com.cornielz.librarysystem.reservation.application.services.ReservationService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/reservations")

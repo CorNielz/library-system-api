@@ -44,7 +44,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<ReservationResponseDTO> getAll() {
+    public List<ReservationResponseDTO> listAll() {
         return repository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 

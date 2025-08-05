@@ -4,6 +4,13 @@ import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
 import com.cornielz.librarysystem.user.application.dto.UserResponseDTO;
 import com.cornielz.librarysystem.user.application.dto.UserUpdateRequestDTO;
 import com.cornielz.librarysystem.user.application.services.UserService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/users")
@@ -29,7 +36,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> listUsers() {
-        return ResponseEntity.ok(userService.getAll());
+        return ResponseEntity.ok(userService.listAll());
     }
 
     @DeleteMapping("/{id}")
