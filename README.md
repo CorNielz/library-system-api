@@ -73,7 +73,7 @@ Users should be allowed to, but not limited to:
 * Update information on a user;
 * Soft delete users;
 
-Each of these features is exposed via REST endpoints and possible due to a relational database model.
+Each of these features is exposed via REST endpoints and enabled by a relational database model.
 
 
 
@@ -99,10 +99,10 @@ This project follows a Modular Monolith architecture, with focus and separation 
 ## Design Decisions
 
 ### Modular Monolith
-The Modular Monolith was choosen due to it encapsulation of related funcionalities, helping organize the code and project structure, also, it's easy to refactor a monolith and later, if escalation is needed, to separate into microservices. Using microservices this early on the project would add additional complexity as well.
+The Modular Monolith was chosen due to it encapsulation of related functionalities, helping organize the code and project structure, also, it's easy to refactor a monolith and later, if escalation is needed, to separate into microservices. Using microservices this early on the project would add additional complexity as well.
 
 ### Domain-Driven Design and Layered Architecture
-DDD and Layered Architecture were chosen to better divide the project by both feature and layer concern, openning the project for expansion and keeping it tidy.
+DDD and Layered Architecture were chosen to better divide the project by both feature and layer concern, opening the project for expansion and keeping it tidy.
 
 ### DTOs
 DTOs were added to the API endpoint requests in order to keep hidden unnecessary fields of domain and infrastructure logic from the final user/consumer.
@@ -168,3 +168,15 @@ In this project, currently, no GUIs are available. Once the application is up an
 `http://localhost:8080`
 
 All available endpoints can be accessed via the Postman Collection, which contains test/demo cases for you.
+
+# Postman Collection
+[LibraryCollection](https://www.postman.com/dashcornielz/workspace/library-system/collection/29982401-a6679a31-5665-47ac-be94-1ca670e3a767?action=share&source=copy-link&creator=29982401)
+
+# Roadmap
+Priorities and next courses of action in the development. Warning: This section is **subject to change**, some content here is optional, to make the application cleaner, while others are either essential or required by the challenge.
+1. Exception Handling [Critical Priority];
+2. Logging  [High Priority];
+3. Health Check [High Priority];
+4. Cross models and entity validations [Medium Priority]
+5. Authentication and Authorization with JWT and roles [Low Priority/Extra];
+6. Book tagging for better searching and organizing [Low Priority/Extra];
