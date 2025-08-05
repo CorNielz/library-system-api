@@ -26,7 +26,7 @@ public class ReservationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ReservationResponseDTO> updateReservation(@PathVariable UUID id, @Valid @RequestBody ReservationUpdateRequestDTO dto) {
-        return ResponseEntity.ok(reservationService.update(id, dto));
+        return ResponseEntity.ok(reservationService.update(dto));
     }
 
     @GetMapping("/{id}")
@@ -36,7 +36,7 @@ public class ReservationController {
 
     @GetMapping
     public ResponseEntity<List<ReservationResponseDTO>> listReservations() {
-        return ResponseEntity.ok(reservationService.getAll());
+        return ResponseEntity.ok(reservationService.listAll());
     }
 
     @DeleteMapping("/{id}")

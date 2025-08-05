@@ -27,8 +27,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationResponseDTO update(ReservationUpdateRequestDTO dto) {
-        Reservation reservation = repository.findById(dto.id()).orElseThrow();
-        reservation.update(dto.userId(), dto.bookId(), dto.borrowingDate(), dto.expectedReturnDate(), dto.returnDate(), dto.appliedPrice(), dto.status());
+        Reservation reservation = new Reservation(dto.id(), dto.userId(), dto.bookId(), dto.borrowingDate(), dto.expectedReturnDate(), dto.returnDate(), dto.appliedPrice(), dto.status());
         repository.save(reservation);
         return toDTO(reservation);
     }
@@ -49,6 +48,6 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     private ReservationResponseDTO toDTO(Reservation reservation) {
-        return new ReservationResponseDTO(reservation.id(), reservation.userId(), reservation.bookId(), reservation.borrowingDate(), reservation.expectedReturnDate(), reservation.returnDate(), reservation.appliedPrice(), reservation.status());
+        return new ReservationResponseDTO(reservation.getId(), reservation.getUserId(), reservation.getBookId(), reservation.getBorrowingDate(), reservation.getExpectedReturnDate(), reservation.getReturnDate(), reservation.getAppliedPrice(), reservation.getStatus());
     }
 }

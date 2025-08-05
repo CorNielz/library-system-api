@@ -17,8 +17,4 @@ public interface ReservationService {
     ReservationResponseDTO getById(UUID id);
 
     List<ReservationResponseDTO> listAll();
-
-    List<ReservationResponseDTO> listByUserId(UUID userId);
-
-    List<ReservationResponseDTO> listByBookId(UUID bookId);
 }
