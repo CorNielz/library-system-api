@@ -38,9 +38,11 @@
 </details>
 
 
+
 ## About The Project
 
 Born from a coding challenge, this project is a back-end RESTFUL API for a CRUD library system. 
+
 
 
 ## Features
@@ -74,6 +76,7 @@ Users should be allowed to, but not limited to:
 Each of these features is exposed via REST endpoints and possible due to a relational database model.
 
 
+
 ## Tech Stack
 This project uses the following technologies:
 
@@ -85,3 +88,8 @@ This project uses the following technologies:
 * IntelliJ (Java IDE)
 * Postman (API testing and demo)
 * DBDiagram.io (ER diagram)
+
+
+
+## Architecture Overview
+This project follows a Modular Monolith architecture, with focus and separation of business logic (Domain-Driven Design). The project is organized into four layers, API, Application, Domain, and Infrastructure (Layered Architecture).
