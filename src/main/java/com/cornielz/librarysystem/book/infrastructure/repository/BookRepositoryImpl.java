@@ -1,10 +1,9 @@
-package com.cornielz.librarysystem.book.infrastructure.persistence;
+package com.cornielz.librarysystem.book.infrastructure.repository;
 
 import com.cornielz.librarysystem.book.domain.model.Book;
 import com.cornielz.librarysystem.book.domain.model.BookStatus;
 import com.cornielz.librarysystem.book.domain.repository.BookRepository;
 import com.cornielz.librarysystem.book.infrastructure.mapper.BookEntityMapper;
-import com.cornielz.librarysystem.book.infrastructure.repository.BookJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +29,14 @@ public class BookRepositoryImpl implements BookRepository {
     public Optional<Book> findByTitle(String title) {
         return jpaRepository.findByTitle(title)
                 .map(mapper::toDomain);
+    }
+
+    @Override
+    public List<Book> findAllByAuthor(String author) {
+        return jpaRepository.findAllByAuthorNameIgnoreCase(author)
+                .stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
     }
 
     @Override
