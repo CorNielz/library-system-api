@@ -1,11 +1,13 @@
 package com.cornielz.librarysystem.author.domain.model;
 
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Author {
     private static final String NAME_REGEX = "^[\\p{L}]+([ '-][\\p{L}]+)*$";
-    private static final String BIOS_REGEX = "^(.|\\s)*[a-zA-Z]+(.|\\s)*$";
+    private static final String BIOGRAPHY_REGEX = "^(.|\\s)*[a-zA-Z]+(.|\\s)*$";
 
     private static final int MAX_NAME_LENGTH = 100;
     private static final int MAX_NATIONALITY_LENGTH = 32;
@@ -13,23 +15,29 @@ public class Author {
     private final UUID id;
 
     private String name;
-    private String bios;
+    private String biography;
 
     private LocalDateTime birthDate;
     private String nationality;
 
-    public Author(UUID id, String name, String bios, LocalDateTime birthDate, String nationality) {
+    private AuthorStatus status;
+
+    public Author(UUID id, String name, String biography, LocalDateTime birthDate, String nationality, AuthorStatus status) {
+        validateName(name);
+        validateBiography(biography);
+        validateBirthDate(birthDate);
+        validateNationality(nationality);
+        validateStatus(status);
+
         this.id = id;
 
-        validateName(name);
         this.name = name;
-        validateBios(bios);
-        this.bios = bios;
+        this.biography = biography;
 
-        validateBirthDate(birthDate);
         this.birthDate = birthDate;
-        validateNationality(nationality);
         this.nationality = nationality;
+
+        this.status = status;
     }
 
     // Validations
@@ -48,12 +56,12 @@ public class Author {
         }
     }
 
-    private void validateBios(String bios) {
-        if (bios == null || bios.isBlank()) {
+    private void validateBiography(String biography) {
+        if (biography == null || biography.isBlank()) {
             return;
         }
 
-        if (!bios.matches(BIOS_REGEX)) {
+        if (!biography.matches(BIOGRAPHY_REGEX)) {
             throw new IllegalArgumentException("Biography cannot contain illegal characters");
         }
     }
@@ -80,6 +88,12 @@ public class Author {
         }
     }
 
+    private void validateStatus(AuthorStatus status) {
+        if (status == null) {
+            throw new IllegalArgumentException("Status cannot be null");
+        }
+    }
+
     // Setters
 
     public void rename(String newName) {
@@ -87,9 +101,9 @@ public class Author {
         this.name = newName;
     }
 
-    public void rewriteBios(String newBios) {
-        validateBios(newBios);
-        this.bios = newBios;
+    public void rewriteBiography(String newBiography) {
+        validateBiography(newBiography);
+        this.biography = newBiography;
     }
 
     public void changeBirthDate(LocalDateTime newBirthDate) {
@@ -102,25 +116,11 @@ public class Author {
         this.nationality = newNationality;
     }
 
+    public void updateStatus(AuthorStatus newStatus) {
+        validateStatus(newStatus);
+        this.status = newStatus;
+    }
+
     // Getters
 
-    public UUID getId() {
-        return this.id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String getBios() {
-        return this.bios;
-    }
-
-    public LocalDateTime getBirthDate() {
-        return this.birthDate;
-    }
-
-    public String getNationality() {
-        return this.nationality;
-    }
 }
