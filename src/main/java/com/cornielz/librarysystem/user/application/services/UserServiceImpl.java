@@ -22,15 +22,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO create(UserCreationRequestDTO dto) {
-        User user = new User(dto.userId(), dto.name(), dto.nickname(), dto.email(), dto.hashedPassword(), dto.status());
+        User user = new User(UUID.randomUUID(), dto.name(), dto.nickname(), dto.email(), dto.hashedPassword(), dto.status());
         repository.save(user);
         return toDTO(user);
     }
 
     @Override
     public UserResponseDTO update(UserUpdateRequestDTO dto) {
-        User user = repository.findById(dto.id()).orElseThrow();
-        user.update(dto.name(), dto.nickname(), dto.email(), dto.hashedPassword(), dto.status());
+        User user = new User(dto.id(), dto.name(), dto.nickname(), dto.email(), dto.hashedPassword(), dto.status());
         repository.save(user);
         return toDTO(user);
     }
@@ -51,6 +50,6 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserResponseDTO toDTO(User user) {
-        return new UserResponseDTO(user.id(), user.name(), user.nickname(), user.email(), user.hashedPassword(), user.status());
+        return new UserResponseDTO(user.getId(), user.getName(), user.getNickname(), user.getEmail(), user.getHashedPassword(), user.getStatus());
     }
 }

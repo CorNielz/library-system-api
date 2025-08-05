@@ -9,6 +9,7 @@ public record UserResponseDTO(
         String name,
         String nickname,
         String email,
+        byte[] hashedPassword,
         UserStatus status
 ) {
 }

@@ -26,11 +26,8 @@ public class User {
 
     private UserStatus status;
 
-    private UUID roleId;
-
-    public User(UUID id, String name, String nickname, String email, byte[] hashedPassword, UserStatus status, UUID roleId) {
+    public User(UUID id, String name, String nickname, String email, byte[] hashedPassword, UserStatus status) {
         validateId(id);
-        validateId(roleId);
         validateName(name);
         validateNickname(nickname);
         validateEmail(email);
@@ -46,8 +43,6 @@ public class User {
         this.hashedPassword = hashedPassword;
 
         this.status = status;
-
-        this.roleId = roleId;
     }
 
     // Validations
@@ -139,11 +134,6 @@ public class User {
         this.status = newStatus;
     }
 
-    public void assignNewRole(UUID newRoleId) {
-        validateId(newRoleId);
-        this.roleId = newRoleId;
-    }
-
     // Getters
 
     public UUID getId() {
@@ -168,9 +158,5 @@ public class User {
 
     public UserStatus getStatus() {
         return status;
-    }
-
-    public UUID getRoleId() {
-        return roleId;
     }
 }
