@@ -26,7 +26,7 @@ public class ReviewController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ReviewResponseDTO> updateReview(@PathVariable UUID id, @Valid @RequestBody ReviewUpdateRequestDTO dto) {
-        return ResponseEntity.ok(reviewService.update(id, dto));
+        return ResponseEntity.ok(reviewService.update(dto));
     }
 
     @GetMapping("/{id}")
@@ -36,7 +36,7 @@ public class ReviewController {
 
     @GetMapping
     public ResponseEntity<List<ReviewResponseDTO>> listReviews() {
-        return ResponseEntity.ok(reviewService.getAll());
+        return ResponseEntity.ok(reviewService.listAll());
     }
 
     @DeleteMapping("/{id}")

@@ -27,8 +27,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public ReviewResponseDTO update(ReviewUpdateRequestDTO dto) {
-        Review review = repository.findById(dto.id()).orElseThrow();
-        review.update(dto.userId(), dto.bookId(), dto.title(), dto.comment(), dto.score());
+        Review review = new Review(dto.id(), dto.userId(), dto.bookId(), dto.title(), dto.comment(), dto.score());
         repository.save(review);
         return toDTO(review);
     }
@@ -53,12 +52,7 @@ public class ReviewServiceImpl implements ReviewService {
         return List.of();
     }
 
-    @Override
-    public List<ReviewResponseDTO> getAll() {
-        return repository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
-    }
-
     private ReviewResponseDTO toDTO(Review review) {
-        return new ReviewResponseDTO(review.id(), review.userId(), review.bookId(), review.title(), review.comment(), review.score());
+        return new ReviewResponseDTO(review.getId(), review.getUserId(), review.getBookId(), review.getTitle(), review.getComment(), review.getScore());
     }
 }
