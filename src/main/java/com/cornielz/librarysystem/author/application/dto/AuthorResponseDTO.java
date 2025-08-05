@@ -8,7 +8,7 @@ import java.util.UUID;
 public record AuthorResponseDTO(
         UUID id,
         String name,
-        String bio,
+        String biography,
         LocalDateTime birthDate,
         String nationality,
         AuthorStatus status

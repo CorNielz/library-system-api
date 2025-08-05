@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public record AuthorCreationRequestDTO(
         @NotBlank @Size(max = 100) String name,
-        String bio,
+        String biography,
         @NotNull LocalDateTime birthDate,
         @NotBlank @Size(max = 32) String nationality,
         @NotNull AuthorStatus status
