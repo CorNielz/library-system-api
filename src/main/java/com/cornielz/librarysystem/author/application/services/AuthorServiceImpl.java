@@ -28,8 +28,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorResponseDTO update(AuthorUpdateRequestDTO dto) {
-        Author author = repository.findById(dto.id()).orElseThrow();
-        author.update(dto.name(), dto.bio(), dto.birthDate(), dto.nationality(), dto.status());
+        Author author = new Author(dto.id(), dto.name(), dto.biography(), dto.birthDate(), dto.nationality(), dto.status());
         repository.save(author);
         return toDTO(author);
     }
@@ -50,6 +49,6 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     private AuthorResponseDTO toDTO(Author author) {
-        return new AuthorResponseDTO(author.id(), author.name(), author.bio(), author.birthDate(), author.nationality(), author.status());
+        return new AuthorResponseDTO(author.getId(), author.getName(), author.getBiography(), author.getBirthDate(), author.getNationality(), author.getStatus());
     }
 }

@@ -123,4 +123,27 @@ public class Author {
 
     // Getters
 
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public LocalDateTime getBirthDate() {
+        return birthDate;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public AuthorStatus getStatus() {
+        return status;
+    }
 }

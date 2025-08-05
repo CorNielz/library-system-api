@@ -26,7 +26,7 @@ public class AuthorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<AuthorResponseDTO> updateAuthor(@PathVariable UUID id, @Valid @RequestBody AuthorUpdateRequestDTO dto) {
-        return ResponseEntity.ok(authorService.update(id, dto));
+        return ResponseEntity.ok(authorService.update(dto));
     }
 
     @GetMapping("/{id}")
