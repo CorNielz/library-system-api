@@ -119,3 +119,52 @@ PostgreSQL was chosen due to being a relational database, with great AWS integra
 
 ## Database Schema
 [Current ER Diagram](https://github.com/CorNielz/library-system-api/).
+
+
+
+# Getting Started
+
+## Prerequisites
+
+* Java 21
+* Maven
+* PostgreSQL
+* IDE
+* Git
+
+
+
+## Installation
+
+### 1. Clone the Repo
+
+Run in your IDE/Git Bash (Preferable IntelliJ)
+`git clone https://github.com/CorNielz/library-system-api.git`
+
+### 2. Configure the DB
+
+Run in your terminal: 
+`psql -U postgres -f Library System ER.sql`
+
+### 3. Build with Maven
+
+Run in your IDE/Terminal (Preferable IntelliJ)
+`mvn clean install`
+
+
+
+## Running the Application
+
+### 1. Run Application
+
+* Maven
+Run in your IDE/Git Bash (Preferable IntelliJ)
+`mvn spring-boot:run`
+
+### 2. Usage
+
+In this project, currently, no GUIs are available. Once the application is up and running, it will start a local server.
+
+`http://localhost:8080`
+
+All available endpoints can be accessed via the Postman Collection, which contains test/demo cases for you.
