@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AuthorService {
-    AuthorResponseDTO create(AuthorCreationRequestDTO request);
+    AuthorResponseDTO create(AuthorCreationRequestDTO requestDto);
 
-    AuthorResponseDTO update(AuthorUpdateRequestDTO request);
+    AuthorResponseDTO update(AuthorUpdateRequestDTO requestDto);
 
     void delete(UUID id);
 

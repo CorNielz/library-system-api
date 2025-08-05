@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface BookService {
-    BookResponseDTO create(BookCreationRequestDTO request);
+    BookResponseDTO create(BookCreationRequestDTO requestDto);
 
-    BookResponseDTO update(BookUpdateRequestDTO request);
+    BookResponseDTO update(BookUpdateRequestDTO requestDto);
 
     void delete(UUID id);
 

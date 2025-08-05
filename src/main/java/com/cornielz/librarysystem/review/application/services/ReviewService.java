@@ -8,15 +8,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ReviewService {
-    ReviewResponseDTO create(ReviewCreationRequestDTO request);
+    ReviewResponseDTO create(ReviewCreationRequestDTO requestDto);
 
-    ReviewResponseDTO update(ReviewUpdateRequestDTO request);
+    ReviewResponseDTO update(ReviewUpdateRequestDTO requestDto);
 
     void delete(UUID id);
 
     ReviewResponseDTO getById(UUID id);
 
     List<ReviewResponseDTO> listAll();
-
-    List<ReviewResponseDTO> listByBookId(UUID bookId);
 }
