@@ -20,15 +20,6 @@
       </ul>
     </li>
     <li>
-      <a href="#api-endpoints">API Endpoints</a>
-      <ul>
-        <li><a href="#books">Books</a></li>
-        <li><a href="#reservations">Reservations</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#health-check">Health Check</a></li>     
-      </ul>
-    </li>
-    <li>
       <a href="#postman-collection">Postman Collection</a>
     </li>
     <li>
