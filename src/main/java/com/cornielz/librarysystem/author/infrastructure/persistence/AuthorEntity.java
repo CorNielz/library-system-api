@@ -1,6 +1,7 @@
 package com.cornielz.librarysystem.author.infrastructure.persistence;
 
 import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -62,6 +63,10 @@ public class AuthorEntity {
 
     public void changeNationality(String newNationality) {
         this.nationality = newNationality;
+    }
+
+    public void updateStatus(AuthorStatus newAuthorStatus) {
+        this.status = newAuthorStatus;
     }
 
     // Getters

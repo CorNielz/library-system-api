@@ -11,6 +11,8 @@ public interface BookRepository {
 
     Optional<Book> findByTitle(String title);
 
+    List<Book> findAllByAuthor(String author);
+
     List<Book> findAll();
 
     void save(Book book);

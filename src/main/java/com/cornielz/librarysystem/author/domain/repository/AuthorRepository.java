@@ -9,6 +9,8 @@ import java.util.UUID;
 public interface AuthorRepository {
     Optional<Author> findById(UUID id);
 
+    Optional<Author> findByName(String name);
+
     List<Author> findAll();
 
     void save(Author author);
