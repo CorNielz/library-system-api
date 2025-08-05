@@ -36,3 +36,39 @@
     </li>
   </ol>
 </details>
+
+
+## About The Project
+
+Born from a coding challenge, this project is a back-end RESTFUL API for a CRUD library system. 
+
+
+## Features
+
+Users should be allowed to, but not limited to:
+
+### Books
+* Search and list books by title and/or author;
+* Register books;
+* Update book information;
+* Soft delete books;
+
+### Reservations
+* Check and list reservations;
+* Reserve available copies by a price; 
+* Update data of a reservation;
+* Delete reservations;
+
+### Reviews
+* Check and list reviews for a book
+* Submit reviews for a book;
+* Edit review content;
+* Delete a review;
+
+### Users
+* Register new users;
+* Check and list users;
+* Update information on a user;
+* Soft delete users;
+
+Each of these features is exposed via REST endpoints and possible due to a relational database model.
