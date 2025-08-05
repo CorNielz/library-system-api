@@ -93,3 +93,24 @@ This project uses the following technologies:
 
 ## Architecture Overview
 This project follows a Modular Monolith architecture, with focus and separation of business logic (Domain-Driven Design). The project is organized into four layers, API, Application, Domain, and Infrastructure (Layered Architecture).
+
+
+
+## Design Decisions
+
+### Modular Monolith
+The Modular Monolith was choosen due to it encapsulation of related funcionalities, helping organize the code and project structure, also, it's easy to refactor a monolith and later, if escalation is needed, to separate into microservices. Using microservices this early on the project would add additional complexity as well.
+
+### Domain-Driven Design and Layered Architecture
+DDD and Layered Architecture were chosen to better divide the project by both feature and layer concern, openning the project for expansion and keeping it tidy.
+
+### DTOs
+DTOs were added to the API endpoint requests in order to keep hidden unnecessary fields of domain and infrastructure logic from the final user/consumer.
+Some tables received the DELETED status, so to soft delete values, allowing auditability and restoration in case of severe problems.
+
+### Mapping
+To reduce boilerplate, auto mapping was introduced via MapStruct.
+
+
+### PostgreSQL Database
+PostgreSQL was chosen due to being a relational database, with great AWS integration and ENUM capacities.  
