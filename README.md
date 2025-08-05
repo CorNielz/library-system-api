@@ -114,3 +114,8 @@ To reduce boilerplate, auto mapping was introduced via MapStruct.
 
 ### PostgreSQL Database
 PostgreSQL was chosen due to being a relational database, with great AWS integration and ENUM capacities.  
+
+
+
+## Database Schema
+[Current ER Diagram](https://github.com/CorNielz/library-system-api/).
