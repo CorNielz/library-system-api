@@ -1,6 +1,10 @@
-package com.cornielz.librarysystem.domain.user;
+package com.cornielz.librarysystem.user.domain.model;
 
-import java.util.Objects;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.util.UUID;
 
 public class User {
@@ -22,11 +26,8 @@ public class User {
 
     private UserStatus status;
 
-    private UUID roleId;
-
-    public User(UUID id, String name, String nickname, String email, byte[] hashedPassword, UserStatus status, UUID roleId) {
+    public User(UUID id, String name, String nickname, String email, byte[] hashedPassword, UserStatus status) {
         validateId(id);
-        validateId(roleId);
         validateName(name);
         validateNickname(nickname);
         validateEmail(email);
@@ -42,8 +43,6 @@ public class User {
         this.hashedPassword = hashedPassword;
 
         this.status = status;
-
-        this.roleId = roleId;
     }
 
     // Validations
@@ -63,7 +62,7 @@ public class User {
             throw new IllegalArgumentException(String.format("Name cannot exceed %s characters", MAX_NAME_LENGTH));
         }
 
-        if (!name.matches(NAME_REGEX)){
+        if (!name.matches(NAME_REGEX)) {
             throw new IllegalArgumentException("Name cannot contain illegal characters");
         }
     }
@@ -77,7 +76,7 @@ public class User {
             throw new IllegalArgumentException(String.format("Nickname cannot exceed %s characters", MAX_NICKNAME_LENGTH));
         }
 
-        if (!nickname.matches(NICKNAME_REGEX)){
+        if (!nickname.matches(NICKNAME_REGEX)) {
             throw new IllegalArgumentException("Nickname cannot contain illegal characters");
         }
     }
@@ -91,7 +90,7 @@ public class User {
             throw new IllegalArgumentException(String.format("Email cannot exceed %s characters", MAX_EMAIL_LENGTH));
         }
 
-        if (!email.matches(EMAIL_REGEX)){
+        if (!email.matches(EMAIL_REGEX)) {
             throw new IllegalArgumentException("Email must be in valid format");
         }
     }
@@ -102,7 +101,7 @@ public class User {
         }
     }
 
-    private void validateStatus(UserStatus status){
+    private void validateStatus(UserStatus status) {
         if (status == null) {
             throw new IllegalArgumentException("Status cannot be null");
         }
@@ -135,11 +134,6 @@ public class User {
         this.status = newStatus;
     }
 
-    public void assignNewRole(UUID newRoleId) {
-        validateId(newRoleId);
-        this.roleId = newRoleId;
-    }
-
     // Getters
 
     public UUID getId() {
@@ -162,11 +156,7 @@ public class User {
         return hashedPassword;
     }
 
-    public UserStatus  getStatus() {
+    public UserStatus getStatus() {
         return status;
-    }
-
-    public UUID getRoleId() {
-        return roleId;
     }
 }

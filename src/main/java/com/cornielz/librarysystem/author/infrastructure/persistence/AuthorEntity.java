@@ -1,10 +1,10 @@
-package com.cornielz.librarysystem.infrastructure.author;
+package com.cornielz.librarysystem.author.infrastructure.persistence;
+
+import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
-import jakarta.persistence.*;
-import com.cornielz.librarysystem.domain.author.AuthorStatus;
 
 @Entity
 @Table(name = "authors")
@@ -48,19 +48,19 @@ public class AuthorEntity {
 
     // Setters
 
-    public void rename(String newName){
+    public void rename(String newName) {
         this.name = newName;
     }
 
-    public void rewriteBios(String newBios){
+    public void rewriteBios(String newBios) {
         this.bios = newBios;
     }
 
-    public void changeBirthDate(LocalDateTime newBirthDate){
+    public void changeBirthDate(LocalDateTime newBirthDate) {
         this.birthDate = newBirthDate;
     }
 
-    public void changeNationality(String newNationality){
+    public void changeNationality(String newNationality) {
         this.nationality = newNationality;
     }
 

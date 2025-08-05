@@ -1,9 +1,10 @@
-package com.cornielz.librarysystem.application.reservation;
+package com.cornielz.librarysystem.reservation.application.dto;
+
+import com.cornielz.librarysystem.reservation.domain.model.ReservationStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import com.cornielz.librarysystem.domain.reservation.ReservationStatus;
 
 public record ReservationResponseDTO(
         UUID id,
@@ -14,4 +15,5 @@ public record ReservationResponseDTO(
         LocalDateTime returnDate,
         BigDecimal appliedPrice,
         ReservationStatus status
-) {}
+) {
+}

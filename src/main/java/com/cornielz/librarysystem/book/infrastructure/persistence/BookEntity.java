@@ -1,12 +1,12 @@
-package com.cornielz.librarysystem.infrastructure.book;
+package com.cornielz.librarysystem.book.infrastructure.persistence;
+
+import com.cornielz.librarysystem.book.domain.model.BookCondition;
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
-import jakarta.persistence.*;
-import com.cornielz.librarysystem.domain.book.BookCondition;
-import com.cornielz.librarysystem.domain.book.BookStatus;
 
 @Entity
 @Table(name = "books")
@@ -60,31 +60,31 @@ public class BookEntity {
 
     // Setters
 
-    public void rename(String newTitle){
+    public void rename(String newTitle) {
         this.title = newTitle;
     }
 
-    public void rewriteDescription(String newDescription){
+    public void rewriteDescription(String newDescription) {
         this.description = newDescription;
     }
 
-    public void updateLanguage(String newLanguage){
+    public void updateLanguage(String newLanguage) {
         this.language = newLanguage;
     }
 
-    public void updatePublicationDate(LocalDateTime newPublicationDate){
+    public void updatePublicationDate(LocalDateTime newPublicationDate) {
         this.publicationDate = newPublicationDate;
     }
 
-    public void updatePrice(BigDecimal newPrice){
+    public void updatePrice(BigDecimal newPrice) {
         this.price = newPrice;
     }
 
-    public void updateBookCondition(BookCondition newBookCondition){
+    public void updateBookCondition(BookCondition newBookCondition) {
         this.condition = newBookCondition;
     }
 
-    public void updateBookStatus(BookStatus newBookStatus){
+    public void updateBookStatus(BookStatus newBookStatus) {
         this.status = newBookStatus;
     }
 

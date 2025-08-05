@@ -1,13 +1,13 @@
-package com.cornielz.librarysystem.infrastructure.reservation;
+package com.cornielz.librarysystem.reservation.infrastructure.persistence;
+
+import com.cornielz.librarysystem.book.infrastructure.persistence.BookEntity;
+import com.cornielz.librarysystem.reservation.domain.model.ReservationStatus;
+import com.cornielz.librarysystem.user.infrastructure.persistence.UserEntity;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
-import jakarta.persistence.*;
-import com.cornielz.librarysystem.domain.reservation.ReservationStatus;
-import com.cornielz.librarysystem.infrastructure.book.BookEntity;
-import com.cornielz.librarysystem.infrastructure.user.UserEntity;
 
 @Entity
 @Table(name = "reservations")
@@ -62,31 +62,31 @@ public class ReservationEntity {
 
     // Setters
 
-    public void changeUser(UserEntity newUser){
+    public void changeUser(UserEntity newUser) {
         this.user = newUser;
     }
 
-    public void changeBook(BookEntity newBook){
+    public void changeBook(BookEntity newBook) {
         this.book = newBook;
     }
 
-    public void updateBorrowingDate(LocalDateTime newBorrowingDate){
+    public void updateBorrowingDate(LocalDateTime newBorrowingDate) {
         this.borrowingDate = newBorrowingDate;
     }
 
-    public void updateExpectedReturnDate(LocalDateTime newExpectedReturnDate){
+    public void updateExpectedReturnDate(LocalDateTime newExpectedReturnDate) {
         this.expectedReturnDate = newExpectedReturnDate;
     }
 
-    public void updateReturnDate(LocalDateTime newReturnDate){
+    public void updateReturnDate(LocalDateTime newReturnDate) {
         this.returnDate = newReturnDate;
     }
 
-    public void modifyAppliedPrice(BigDecimal newAppliedPrice){
+    public void modifyAppliedPrice(BigDecimal newAppliedPrice) {
         this.appliedPrice = newAppliedPrice;
     }
 
-    public void updateReservationStatus(ReservationStatus newReservationStatus){
+    public void updateReservationStatus(ReservationStatus newReservationStatus) {
         this.status = newReservationStatus;
     }
 

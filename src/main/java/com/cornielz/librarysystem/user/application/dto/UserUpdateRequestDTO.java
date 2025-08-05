@@ -1,11 +1,12 @@
-package com.cornielz.librarysystem.application.user;
+package com.cornielz.librarysystem.user.application.dto;
+
+import com.cornielz.librarysystem.user.domain.model.UserStatus;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import com.cornielz.librarysystem.domain.user.UserStatus;
 
 public record UserUpdateRequestDTO(
         @NotNull UUID id,
@@ -14,4 +15,5 @@ public record UserUpdateRequestDTO(
         @NotBlank @Email @Size(max = 254) String email,
         @NotNull byte[] hashedPassword,
         @NotNull UserStatus status
-) {}
+) {
+}

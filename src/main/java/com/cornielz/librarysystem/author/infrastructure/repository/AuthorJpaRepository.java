@@ -1,10 +1,10 @@
-package com.cornielz.librarysystem.infrastructure.author;
+package com.cornielz.librarysystem.author.infrastructure.repository;
 
-import com.cornielz.librarysystem.domain.author.Author;
+import com.cornielz.librarysystem.author.infrastructure.persistence.AuthorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
 import java.util.UUID;
 
-public interface SpringDataAuthorRepository extends JpaRepository<AuthorEntity, UUID> {
+public interface AuthorJpaRepository extends JpaRepository<AuthorEntity, UUID> {
 
 }

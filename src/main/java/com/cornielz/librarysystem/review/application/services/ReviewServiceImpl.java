@@ -1,7 +1,10 @@
-package com.cornielz.librarysystem.application.review;
+package com.cornielz.librarysystem.review.application.services;
 
-import com.cornielz.librarysystem.domain.review.Review;
-import com.cornielz.librarysystem.domain.review.ReviewRepository;
+import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
+import com.cornielz.librarysystem.review.domain.model.Review;
+import com.cornielz.librarysystem.review.domain.repository.ReviewRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,15 +27,14 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public ReviewResponseDTO update(ReviewUpdateRequestDTO dto) {
-        Review review = repository.findById(dto.id()).orElseThrow();
-        review.update(dto.userId(), dto.bookId(), dto.title(), dto.comment(), dto.score());
+        Review review = new Review(dto.id(), dto.userId(), dto.bookId(), dto.title(), dto.comment(), dto.score());
         repository.save(review);
         return toDTO(review);
     }
 
     @Override
     public void delete(UUID id) {
-        repository.deleteById(id);
+        repository.delete(id);
     }
 
     @Override
@@ -41,11 +43,16 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewResponseDTO> getAll() {
-        return repository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+    public List<ReviewResponseDTO> listAll() {
+        return List.of();
+    }
+
+    @Override
+    public List<ReviewResponseDTO> listByBookId(UUID bookId) {
+        return List.of();
     }
 
     private ReviewResponseDTO toDTO(Review review) {
-        return new ReviewResponseDTO(review.id(), review.userId(), review.bookId(), review.title(), review.comment(), review.score());
+        return new ReviewResponseDTO(review.getId(), review.getUserId(), review.getBookId(), review.getTitle(), review.getComment(), review.getScore());
     }
 }

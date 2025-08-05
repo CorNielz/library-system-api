@@ -1,3 +1,17 @@
+package com.cornielz.librarysystem.reservation.api.controller;
+
+import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
+import com.cornielz.librarysystem.reservation.application.services.ReservationService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/reservations")
 @RequiredArgsConstructor
@@ -12,7 +26,7 @@ public class ReservationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ReservationResponseDTO> updateReservation(@PathVariable UUID id, @Valid @RequestBody ReservationUpdateRequestDTO dto) {
-        return ResponseEntity.ok(reservationService.update(id, dto));
+        return ResponseEntity.ok(reservationService.update(dto));
     }
 
     @GetMapping("/{id}")
@@ -22,7 +36,7 @@ public class ReservationController {
 
     @GetMapping
     public ResponseEntity<List<ReservationResponseDTO>> listReservations() {
-        return ResponseEntity.ok(reservationService.getAll());
+        return ResponseEntity.ok(reservationService.listAll());
     }
 
     @DeleteMapping("/{id}")

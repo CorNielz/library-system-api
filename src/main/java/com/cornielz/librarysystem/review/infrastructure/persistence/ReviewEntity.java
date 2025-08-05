@@ -1,11 +1,11 @@
-package com.cornielz.librarysystem.infrastructure.review;
+package com.cornielz.librarysystem.review.infrastructure.persistence;
+
+import com.cornielz.librarysystem.book.infrastructure.persistence.BookEntity;
+import com.cornielz.librarysystem.user.infrastructure.persistence.UserEntity;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
-import jakarta.persistence.*;
-import com.cornielz.librarysystem.infrastructure.book.BookEntity;
-import com.cornielz.librarysystem.infrastructure.user.UserEntity;
 
 @Entity
 @Table(name = "reviews")

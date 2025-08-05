@@ -1,3 +1,17 @@
+package com.cornielz.librarysystem.author.api.controller;
+
+import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
+import com.cornielz.librarysystem.author.application.services.AuthorService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/authors")
 @RequiredArgsConstructor
@@ -12,18 +26,17 @@ public class AuthorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<AuthorResponseDTO> updateAuthor(@PathVariable UUID id, @Valid @RequestBody AuthorUpdateRequestDTO dto) {
-        return ResponseEntity.ok(authorService.update(id, dto));
+        return ResponseEntity.ok(authorService.update(dto));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<AuthorResponseDTO> getAuthor(@PathVariable UUID id) {
         return ResponseEntity.ok(authorService.getById(id));
-        return ResponseEntity.ok(authorService.getById(id));
     }
 
     @GetMapping
     public ResponseEntity<List<AuthorResponseDTO>> listAuthors() {
-        return ResponseEntity.ok(authorService.getAll());
+        return ResponseEntity.ok(authorService.listAll());
     }
 
     @DeleteMapping("/{id}")

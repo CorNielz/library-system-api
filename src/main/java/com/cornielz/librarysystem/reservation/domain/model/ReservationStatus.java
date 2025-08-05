@@ -1,6 +1,6 @@
-package com.cornielz.librarysystem.domain.reservation;
+package com.cornielz.librarysystem.reservation.domain.model;
 
-public enum ReservationStatus  {
+public enum ReservationStatus {
     BORROWED,
     CANCELLED,
     LOST,

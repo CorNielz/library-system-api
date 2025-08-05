@@ -1,7 +1,11 @@
-package com.cornielz.librarysystem.application.author;
+package com.cornielz.librarysystem.author.application.services;
 
-import com.cornielz.librarysystem.domain.author.Author;
-import com.cornielz.librarysystem.domain.author.AuthorRepository;
+import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
+import com.cornielz.librarysystem.author.domain.model.Author;
+import com.cornielz.librarysystem.author.domain.repository.AuthorRepository;
+import com.cornielz.librarysystem.author.application.services.AuthorService;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,15 +21,14 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorResponseDTO create(AuthorCreationRequestDTO dto) {
-        Author author = new Author(UUID.randomUUID(), dto.name(), dto.bio(), dto.birthDate(), dto.nationality(), dto.status());
+        Author author = new Author(UUID.randomUUID(), dto.name(), dto.biography(), dto.birthDate(), dto.nationality(), dto.status());
         repository.save(author);
         return toDTO(author);
     }
 
     @Override
     public AuthorResponseDTO update(AuthorUpdateRequestDTO dto) {
-        Author author = repository.findById(dto.id()).orElseThrow();
-        author.update(dto.name(), dto.bio(), dto.birthDate(), dto.nationality(), dto.status());
+        Author author = new Author(dto.id(), dto.name(), dto.biography(), dto.birthDate(), dto.nationality(), dto.status());
         repository.save(author);
         return toDTO(author);
     }
@@ -41,11 +44,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<AuthorResponseDTO> getAll() {
+    public List<AuthorResponseDTO> listAll() {
         return repository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 
     private AuthorResponseDTO toDTO(Author author) {
-        return new AuthorResponseDTO(author.id(), author.name(), author.bio(), author.birthDate(), author.nationality(), author.status());
+        return new AuthorResponseDTO(author.getId(), author.getName(), author.getBiography(), author.getBirthDate(), author.getNationality(), author.getStatus());
     }
 }

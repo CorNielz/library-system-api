@@ -1,6 +1,5 @@
-package com.cornielz.librarysystem.domain.review;
+package com.cornielz.librarysystem.review.domain.model;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class Review {
@@ -55,7 +54,7 @@ public class Review {
             throw new IllegalArgumentException(String.format("Title cannot exceed %s characters", MAX_TITLE_LENGTH));
         }
 
-        if (!title.matches(TITLE_REGEX)){
+        if (!title.matches(TITLE_REGEX)) {
             throw new IllegalArgumentException("Title cannot contain illegal characters");
         }
     }
@@ -65,17 +64,17 @@ public class Review {
             return;
         }
 
-        if (!comment.matches(COMMENT_REGEX)){
+        if (!comment.matches(COMMENT_REGEX)) {
             throw new IllegalArgumentException("Comment cannot contain illegal characters");
         }
     }
 
     private void validateScore(int score) {
-        if (score < 0){
+        if (score < 0) {
             throw new IllegalArgumentException("Score cannot be lower than 0");
         }
 
-        if (score > MAX_SCORE_RATING){
+        if (score > MAX_SCORE_RATING) {
             throw new IllegalArgumentException(String.format("Score cannot be higher than %s", MAX_SCORE_RATING));
         }
     }

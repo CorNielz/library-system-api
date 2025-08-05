@@ -1,9 +1,10 @@
-package com.cornielz.librarysystem.application.author;
+package com.cornielz.librarysystem.author.application.dto;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.UUID;
 
 public record AuthorDeletionMarkRequestDTO(
         @NotNull UUID id
-) {}
+) {
+}

@@ -1,10 +1,10 @@
-package com.cornielz.librarysystem.infrastructure.user;
+package com.cornielz.librarysystem.user.infrastructure.repository;
 
-import com.cornielz.librarysystem.domain.user.User;
+import com.cornielz.librarysystem.user.infrastructure.persistence.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
 import java.util.UUID;
 
-public interface SpringDataUserRepository extends JpaRepository<UserEntity, UUID> {
+public interface UserJpaRepository extends JpaRepository<UserEntity, UUID> {
 
 }
