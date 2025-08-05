@@ -3,7 +3,7 @@ package com.cornielz.librarysystem.book.api.controller;
 import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
 import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;
 import com.cornielz.librarysystem.book.application.dto.BookUpdateRequestDTO;
-import com.cornielz.librarysystem.book.domain.services.BookService;
+import com.cornielz.librarysystem.book.application.services.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +26,7 @@ public class BookController {
 
     @PutMapping("/{id}")
     public ResponseEntity<BookResponseDTO> updateBook(@PathVariable UUID id, @Valid @RequestBody BookUpdateRequestDTO dto) {
-        return ResponseEntity.ok(bookService.update(id, dto));
+        return ResponseEntity.ok(bookService.update(dto));
     }
 
     @GetMapping("/{id}")
@@ -36,7 +36,7 @@ public class BookController {
 
     @GetMapping
     public ResponseEntity<List<BookResponseDTO>> listBooks() {
-        return ResponseEntity.ok(bookService.getAll());
+        return ResponseEntity.ok(bookService.listAll());
     }
 
     @DeleteMapping("/{id}")

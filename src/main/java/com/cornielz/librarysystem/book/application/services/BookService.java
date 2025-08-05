@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.book.domain.services;
+package com.cornielz.librarysystem.book.application.services;
 
 import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
 import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;

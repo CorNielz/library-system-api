@@ -1,4 +1,4 @@
-package com.cornielz.librarysystem.book.domain.services;
+package com.cornielz.librarysystem.book.application.services;
 
 import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
 import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;
@@ -27,8 +27,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookResponseDTO update(BookUpdateRequestDTO dto) {
-        Book book = repository.findById(dto.id()).orElseThrow();
-        book.update(dto.title(), dto.description(), dto.language(), dto.publicationDate(), dto.price(), dto.condition(), dto.status());
+        Book book = new Book(UUID.randomUUID(), dto.title(), dto.description(), dto.language(), dto.publicationDate(), dto.price(), dto.condition(), dto.status());
         repository.save(book);
         return toDTO(book);
     }
@@ -44,11 +43,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookResponseDTO> getAll() {
+    public List<BookResponseDTO> listAll() {
         return repository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 
     private BookResponseDTO toDTO(Book book) {
-        return new BookResponseDTO(book.id(), book.title(), book.description(), book.language(), book.publicationDate(), book.price(), book.condition(), book.status());
+        return new BookResponseDTO(book.getId(), book.getTitle(), book.getDescription(), book.getLanguage(), book.getPublicationDate(), book.getPrice(), book.getCondition(), book.getStatus());
     }
 }
