@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ReservationService {
-    ReservationResponseDTO create(ReservationCreationRequestDTO request);
+    ReservationResponseDTO create(ReservationCreationRequestDTO requestDto);
 
-    ReservationResponseDTO update(ReservationUpdateRequestDTO request);
+    ReservationResponseDTO update(ReservationUpdateRequestDTO requestDto);
 
     void delete(UUID id);
 

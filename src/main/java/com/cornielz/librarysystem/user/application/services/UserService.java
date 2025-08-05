@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface UserService {
-    UserResponseDTO create(UserCreationRequestDTO request);
+    UserResponseDTO create(UserCreationRequestDTO requestDto);
 
-    UserResponseDTO update(UserUpdateRequestDTO request);
+    UserResponseDTO update(UserUpdateRequestDTO requestDto);
 
     void delete(UUID id);
 
