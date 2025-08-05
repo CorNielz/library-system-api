@@ -72,3 +72,16 @@ Users should be allowed to, but not limited to:
 * Soft delete users;
 
 Each of these features is exposed via REST endpoints and possible due to a relational database model.
+
+
+## Tech Stack
+This project uses the following technologies:
+
+* Maven (Builds and dependencies)
+* Java 21 (Core language)
+* Spring Boot 3 (API building)
+* Spring Data JPA (Abstraction for database actions)
+* PostgreSQL (Relational Database)
+* IntelliJ (Java IDE)
+* Postman (API testing and demo)
+* DBDiagram.io (ER diagram)
