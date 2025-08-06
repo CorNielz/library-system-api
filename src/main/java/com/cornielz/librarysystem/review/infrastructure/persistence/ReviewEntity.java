@@ -47,7 +47,7 @@ public class ReviewEntity {
         this.lastUpdateAt = LocalDateTime.now();
     }
 
-    protected ReviewEntity() {
+    public ReviewEntity() {
 
     }
 

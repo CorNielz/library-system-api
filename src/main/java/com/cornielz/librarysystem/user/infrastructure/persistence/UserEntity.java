@@ -45,7 +45,7 @@ public class UserEntity {
         this.lastUpdateAt = LocalDateTime.now();
     }
 
-    protected UserEntity() {
+    public UserEntity() {
 
     }
 

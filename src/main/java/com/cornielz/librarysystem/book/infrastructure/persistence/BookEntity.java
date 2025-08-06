@@ -54,7 +54,7 @@ public class BookEntity {
         this.lastUpdateAt = LocalDateTime.now();
     }
 
-    protected BookEntity() {
+    public BookEntity() {
 
     }
 

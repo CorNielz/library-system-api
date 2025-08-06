@@ -56,7 +56,7 @@ public class ReservationEntity {
         this.lastUpdateAt = LocalDateTime.now();
     }
 
-    protected ReservationEntity() {
+    public ReservationEntity() {
 
     }
 
