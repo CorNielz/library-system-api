@@ -1,10 +1,9 @@
-package com.cornielz.librarysystem.author.infrastructure.persistence;
+package com.cornielz.librarysystem.author.infrastructure.repository;
 
 import com.cornielz.librarysystem.author.domain.model.Author;
 import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
 import com.cornielz.librarysystem.author.domain.repository.AuthorRepository;
 import com.cornielz.librarysystem.author.infrastructure.mapper.AuthorEntityMapper;
-import com.cornielz.librarysystem.author.infrastructure.repository.AuthorJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
