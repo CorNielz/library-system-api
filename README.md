@@ -28,7 +28,7 @@
   </ol>
 </details>
 
-
+<--- PROJECT ON HOLD | PERSONAL ISSUES --->
 
 ## About The Project
 
@@ -165,6 +165,7 @@ All available endpoints can be accessed via the Postman Collection, which contai
 
 # Roadmap
 Priorities and next courses of action in the development. Warning: This section is **subject to change**, some content here is optional, to make the application cleaner, while others are either essential or required by the challenge.
+1. Endpoint errors and implementations [Critical Priority]
 1. Exception Handling [Critical Priority];
 2. Logging  [High Priority];
 3. Health Check [High Priority];
