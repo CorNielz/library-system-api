@@ -109,7 +109,7 @@ PostgreSQL was chosen due to being a relational database, with great AWS integra
 
 
 ## Database Schema
-[Current ER Diagram](https://github.com/CorNielz/library-system-api/).
+[Current ER Diagram](https://github.com/CorNielz/library-system-api/blob/feature/docs/docs/ER%20Diagram_Online%20Library%20API.pdf).
 
 
 
@@ -134,8 +134,9 @@ Run in your IDE/Git Bash (Preferable IntelliJ)
 
 ### 2. Configure the DB
 
-Run in your terminal: 
-`psql -U postgres -f Library System ER.sql`
+Download file and run in your terminal: 
+[LibrarySystem_Er.sql](https://github.com/CorNielz/library-system-api/blob/feature/docs/docs/LibrarySystem_ER.sql)
+`psql -U postgres -f LibrarySystem_ER.sql`
 
 ### 3. Build with Maven
 
