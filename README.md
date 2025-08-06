@@ -122,6 +122,7 @@ PostgreSQL was chosen due to being a relational database, with great AWS integra
 * PostgreSQL
 * IDE
 * Git
+* Postman
 
 
 
@@ -130,17 +131,25 @@ PostgreSQL was chosen due to being a relational database, with great AWS integra
 ### 1. Clone the Repo
 
 Run in your IDE/Git Bash (Preferable IntelliJ)
+
 `git clone https://github.com/CorNielz/library-system-api.git`
 
-### 2. Configure the DB
+### 2. Get SQL File
 
-Download file and run in your terminal: 
-[LibrarySystem_Er.sql](https://github.com/CorNielz/library-system-api/blob/feature/docs/docs/LibrarySystem_ER.sql)
-`psql -U postgres -f LibrarySystem_ER.sql`
+Download ER file: [LibrarySystem_ER.sql](https://github.com/CorNielz/library-system-api/blob/feature/docs/docs/LibrarySystem_ER.sql)
 
-### 3. Build with Maven
+### 3. Configure the DB
+
+Run in your terminal, replacing {sql_file_path} with the full path to the .sql file "LibrarySystem_ER.sql": 
+
+`psql -U postgres -f "{sql_file_path}"`
+
+After running, insert your postgresql password, and then, the tester user password, to finish setting up the database.
+
+### 4. Build with Maven
 
 Run in your IDE/Terminal (Preferable IntelliJ)
+
 `mvn clean install`
 
 
@@ -149,13 +158,15 @@ Run in your IDE/Terminal (Preferable IntelliJ)
 
 ### 1. Run Application
 
-* Maven
 Run in your IDE/Git Bash (Preferable IntelliJ)
+
+
 `mvn spring-boot:run`
 
 ### 2. Usage
 
 In this project, currently, no GUIs are available. Once the application is up and running, it will start a local server.
+
 
 `http://localhost:8080`
 
