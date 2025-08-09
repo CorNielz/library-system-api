@@ -4,10 +4,19 @@
 # Log file
 *.log
 
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Environment files
+.env
+
 # BlueJ files
 *.ctxt
 
-# Mobile Tools for Java (J2ME)
+# Mobile Tools for Java
 .mtj.tmp/
 
 # Package Files #
@@ -23,6 +32,15 @@
 hs_err_pid*
 replay_pid*
 
-# IntelliJ IDEA
+# Maven build directory
+target/
+
+# Maven wrapper files
+.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA project files
 .idea/
 *.iml
+*.ipr
+*.iws
+out/
