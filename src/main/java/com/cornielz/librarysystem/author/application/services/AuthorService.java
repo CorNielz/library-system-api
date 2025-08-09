@@ -2,6 +2,7 @@ package com.cornielz.librarysystem.author.application.services;
 
 import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDTO;
 import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorSearchFilters;
 import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface AuthorService {
 
     AuthorResponseDTO getById(UUID id);
 
-    List<AuthorResponseDTO> listAll();
+    List<AuthorResponseDTO> searchWithFilters(AuthorSearchFilters searchFilters);
 }

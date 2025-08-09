@@ -2,6 +2,7 @@ package com.cornielz.librarysystem.author.application.services;
 
 import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDTO;
 import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorSearchFilters;
 import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 import com.cornielz.librarysystem.author.application.mapper.AuthorDTOMapper;
 import com.cornielz.librarysystem.author.domain.model.Author;
@@ -50,8 +51,8 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<AuthorResponseDTO> listAll() {
-        return repository.findAll()
+    public List<AuthorResponseDTO> searchWithFilters(AuthorSearchFilters searchFilters) {
+        return repository.findAllFiltered(searchFilters)
                 .stream()
                 .map(dtoMapper::toResponseDTO)
                 .collect(Collectors.toList());
