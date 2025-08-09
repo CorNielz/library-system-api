@@ -1,5 +1,7 @@
 package com.cornielz.librarysystem.reservation.application.services;
 
+import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationSearchFilters;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
@@ -16,5 +18,5 @@ public interface ReservationService {
 
     ReservationResponseDTO getById(UUID id);
 
-    List<ReservationResponseDTO> listAll();
+    List<ReservationResponseDTO> searchWithFilters(ReservationSearchFilters searchFilters);
 }

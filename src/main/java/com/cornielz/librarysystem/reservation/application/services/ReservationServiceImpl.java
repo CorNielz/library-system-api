@@ -1,7 +1,8 @@
 package com.cornielz.librarysystem.reservation.application.services;
 
-import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationSearchFilters;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
 import com.cornielz.librarysystem.reservation.application.mapper.ReservationDTOMapper;
 import com.cornielz.librarysystem.reservation.domain.model.Reservation;
@@ -50,8 +51,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<ReservationResponseDTO> listAll() {
-        return repository.findAll()
+    public List<ReservationResponseDTO> searchWithFilters(ReservationSearchFilters searchFilters) {
+        return repository.findAllFiltered(searchFilters)
                 .stream()
                 .map(dtoMapper::toResponseDTO)
                 .collect(Collectors.toList());
