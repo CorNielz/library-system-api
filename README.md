@@ -28,8 +28,6 @@
   </ol>
 </details>
 
-<--- PROJECT ON HOLD | PERSONAL ISSUES --->
-
 ## About The Project
 
 Born from a coding challenge, this project is a back-end RESTFUL API for a CRUD library system. 
