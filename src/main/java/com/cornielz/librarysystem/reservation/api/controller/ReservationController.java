@@ -2,10 +2,8 @@ package com.cornielz.librarysystem.reservation.api.controller;
 
 import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationSearchFilters;
-import com.cornielz.librarysystem.reservation.domain.model.ReservationCondition;
 import com.cornielz.librarysystem.reservation.domain.model.ReservationStatus;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
-import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
 import com.cornielz.librarysystem.reservation.application.services.ReservationService;
 import jakarta.validation.Valid;
