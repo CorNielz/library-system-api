@@ -11,7 +11,7 @@ public record BookSearchFilters(
     String language,
     LocalDateTime publicationDateFrom,
     LocalDateTime publicationDateTo,
-    BigDecimal priceMinimal,
+    BigDecimal priceMinimum,
     BigDecimal priceMaximum,
     BookCondition condition,
     BookStatus status

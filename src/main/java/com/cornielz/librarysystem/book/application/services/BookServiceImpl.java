@@ -2,6 +2,7 @@ package com.cornielz.librarysystem.book.application.services;
 
 import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
 import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;
+import com.cornielz.librarysystem.book.application.dto.BookSearchFilters;
 import com.cornielz.librarysystem.book.application.dto.BookUpdateRequestDTO;
 import com.cornielz.librarysystem.book.application.mapper.BookDTOMapper;
 import com.cornielz.librarysystem.book.domain.model.Book;
@@ -50,11 +51,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookResponseDTO> listAll() {
-        return repository.findAll()
+    public List<BookResponseDTO> searchWithFilters(BookSearchFilters searchFilters) {
+        return repository.findAllFiltered(searchFilters)
                 .stream()
                 .map(dtoMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }
-
 }
