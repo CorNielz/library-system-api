@@ -1,7 +1,8 @@
 package com.cornielz.librarysystem.review.application.services;
 
-import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
 import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewSearchFilters;
+import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
 import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface ReviewService {
 
     ReviewResponseDTO getById(UUID id);
 
-    List<ReviewResponseDTO> listAll();
+    List<ReviewResponseDTO> searchWithFilters(ReviewSearchFilters searchFilters);
 }

@@ -2,6 +2,7 @@ package com.cornielz.librarysystem.review.api.controller;
 
 import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
 import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewSearchFilters;
 import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
 import com.cornielz.librarysystem.review.application.services.ReviewService;
 import jakarta.validation.Valid;
@@ -34,11 +35,18 @@ public class ReviewController {
         return ResponseEntity.ok(reviewService.getById(id));
     }
 
-    @GetMapping
-    public ResponseEntity<List<ReviewResponseDTO>> listReviews() {
-        return ResponseEntity.ok(reviewService.listAll());
+    @GetMapping()
+    public ResponseEntity<List<ReviewResponseDTO>> searchReviews(
+            @RequestParam(required = false) UUID userId,
+            @RequestParam(required = false) UUID bookId,
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) int scoreMinimum,
+            @RequestParam(required = false) int scoreMaximum
+    ) {
+        ReviewSearchFilters searchFilters = new ReviewSearchFilters(userId, bookId, title, scoreMinimum, scoreMaximum);
+        return ResponseEntity.ok(reviewService.searchWithFilters(searchFilters));
     }
-
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReview(@PathVariable UUID id) {
         reviewService.delete(id);

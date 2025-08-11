@@ -1,7 +1,8 @@
 package com.cornielz.librarysystem.review.application.services;
 
-import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
 import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
+import com.cornielz.librarysystem.review.application.dto.ReviewSearchFilters;
+import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
 import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
 import com.cornielz.librarysystem.review.application.mapper.ReviewDTOMapper;
 import com.cornielz.librarysystem.review.domain.model.Review;
@@ -50,8 +51,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewResponseDTO> listAll() {
-        return repository.findAll()
+    public List<ReviewResponseDTO> searchWithFilters(ReviewSearchFilters searchFilters) {
+        return repository.findAllFiltered(searchFilters)
                 .stream()
                 .map(dtoMapper::toResponseDTO)
                 .collect(Collectors.toList());
