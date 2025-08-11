@@ -1,7 +1,8 @@
 package com.cornielz.librarysystem.user.application.services;
 
-import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
 import com.cornielz.librarysystem.user.application.dto.UserResponseDTO;
+import com.cornielz.librarysystem.user.application.dto.UserSearchFilters;
+import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
 import com.cornielz.librarysystem.user.application.dto.UserUpdateRequestDTO;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface UserService {
 
     UserResponseDTO getById(UUID id);
 
-    List<UserResponseDTO> listAll();
+    List<UserResponseDTO> searchWithFilters(UserSearchFilters searchFilters);
 }

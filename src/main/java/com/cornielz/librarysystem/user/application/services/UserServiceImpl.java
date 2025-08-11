@@ -1,7 +1,8 @@
 package com.cornielz.librarysystem.user.application.services;
 
-import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
 import com.cornielz.librarysystem.user.application.dto.UserResponseDTO;
+import com.cornielz.librarysystem.user.application.dto.UserSearchFilters;
+import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
 import com.cornielz.librarysystem.user.application.dto.UserUpdateRequestDTO;
 import com.cornielz.librarysystem.user.application.mapper.UserDTOMapper;
 import com.cornielz.librarysystem.user.domain.model.User;
@@ -44,14 +45,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO getById(UUID id) {
-        return repository.findById(id)
+        return repository.getById(id)
                 .map(dtoMapper::toResponseDTO)
                 .orElse(null);
     }
 
     @Override
-    public List<UserResponseDTO> listAll() {
-        return repository.findAll()
+    public List<UserResponseDTO> searchWithFilters(UserSearchFilters searchFilters) {
+        return repository.findAllFiltered(searchFilters)
                 .stream()
                 .map(dtoMapper::toResponseDTO)
                 .collect(Collectors.toList());
