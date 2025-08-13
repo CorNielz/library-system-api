@@ -2,7 +2,9 @@ package com.cornielz.librarysystem.user.infrastructure.persistence;
 
 import com.cornielz.librarysystem.user.domain.model.UserStatus;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 
+import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -25,7 +27,8 @@ public class UserEntity {
     private byte[] hashedPassword;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @JdbcTypeCode(Types.VARCHAR)
+    @Column(nullable = false, columnDefinition = "user_status")
     private UserStatus status;
 
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -55,24 +58,24 @@ public class UserEntity {
         this.id = id;
     }
 
-    public void rename(String newName) {
-        this.name = newName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void changeNickname(String newNickname) {
-        this.nickname = newNickname;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public void updateEmail(String newEmail) {
-        this.email = newEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void updatePassword(byte[] newHashedPassword) {
-        this.hashedPassword = newHashedPassword;
+    public void setHashedPassword(byte[] hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
-    public void updateStatus(UserStatus newStatus) {
-        this.status = newStatus;
+    public void setStatus(UserStatus status) {
+        this.status = status;
     }
 
     // Getters

@@ -4,6 +4,7 @@ import com.cornielz.librarysystem.user.application.dto.*;
 import com.cornielz.librarysystem.user.application.mapper.UserDTOMapper;
 import com.cornielz.librarysystem.user.domain.model.User;
 import com.cornielz.librarysystem.user.domain.repository.UserRepository;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,8 +29,7 @@ public class UserServiceImpl implements UserService {
         String plainPassword = dto.password();
         byte[] hashedPassword = hashPassword(plainPassword);
 
-        User user = dtoMapper.toDomain(dto, userId);
-        user.updatePassword(hashedPassword);
+        User user = dtoMapper.toDomain(dto, userId, hashedPassword);
 
         repository.save(user);
 
@@ -76,5 +76,13 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(dtoMapper::toResponseDTO)
                 .collect(Collectors.toList());
+    }
+
+
+    private byte[] hashPassword(String plainPassword) {
+        String hasherSalt = BCrypt.gensalt();
+        String hashedPassword = BCrypt.hashpw(plainPassword, hasherSalt);
+
+        return hashedPassword.getBytes();
     }
 }

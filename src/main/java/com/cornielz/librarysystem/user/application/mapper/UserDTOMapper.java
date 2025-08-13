@@ -16,11 +16,11 @@ import java.util.UUID;
 
 @Mapper(componentModel = "spring")
 public interface UserDTOMapper {
-    User toDomain(UserCreationRequestDTO dto, UUID id);
+    User toDomain(UserCreationRequestDTO dto, UUID id, byte[] hashedPassword);
 
-    User toDomain(UserReplaceRequestDTO dto);
+    User toDomain(UserReplaceRequestDTO dto, byte[] hashedPassword);
 
-    User toDomain(UserUpdateRequestDTO dto);
+    User toDomain(UserUpdateRequestDTO dto, byte[] hashedPassword);
 
     UserResponseDTO toResponseDTO(User domain);
 

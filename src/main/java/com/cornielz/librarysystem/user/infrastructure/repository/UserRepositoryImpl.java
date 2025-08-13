@@ -24,7 +24,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void save(User user) {
-        jpaRepository.save(mapper.toEntity(user));
+        UserEntity newUserEntity = mapper.toEntity(user);
+        jpaRepository.save(newUserEntity);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void markAsDeleted(UUID id) {
         jpaRepository.findById(id).ifPresent(entity -> {
-            entity.updateStatus(UserStatus.DELETED);
+            entity.setStatus(UserStatus.DELETED);
             jpaRepository.save(entity);
         });
     }
