@@ -51,6 +51,10 @@ public class UserEntity {
 
     // Setters
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public void rename(String newName) {
         this.name = newName;
     }

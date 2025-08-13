@@ -1,10 +1,7 @@
 package com.cornielz.librarysystem.user.api.controller;
 
-import com.cornielz.librarysystem.user.application.dto.UserResponseDTO;
-import com.cornielz.librarysystem.user.application.dto.UserSearchFilters;
+import com.cornielz.librarysystem.user.application.dto.*;
 import com.cornielz.librarysystem.user.domain.model.UserStatus;
-import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
-import com.cornielz.librarysystem.user.application.dto.UserUpdateRequestDTO;
 import com.cornielz.librarysystem.user.application.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +24,13 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> replaceUser(@PathVariable UUID id, @Valid @RequestBody UserReplaceRequestDTO dto) {
+        return ResponseEntity.ok(userService.replace(id, dto));
+    }
+
+    @PatchMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @Valid @RequestBody UserUpdateRequestDTO dto) {
-        return ResponseEntity.ok(userService.update(dto));
+        return ResponseEntity.ok(userService.update(id, dto));
     }
 
     @GetMapping("/{id}")
@@ -46,6 +48,7 @@ public class UserController {
         UserSearchFilters searchFilters = new UserSearchFilters(name, nickname, email, status);
         return ResponseEntity.ok(userService.searchWithFilters(searchFilters));
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
         userService.delete(id);

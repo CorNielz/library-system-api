@@ -1,6 +1,8 @@
 package com.cornielz.librarysystem.user.domain.repository;
 
+import com.cornielz.librarysystem.user.application.dto.UserReplaceRequestDTO;
 import com.cornielz.librarysystem.user.application.dto.UserSearchFilters;
+import com.cornielz.librarysystem.user.application.dto.UserUpdateRequestDTO;
 import com.cornielz.librarysystem.user.domain.model.User;
 
 import java.util.List;

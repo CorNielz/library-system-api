@@ -1,15 +1,13 @@
 package com.cornielz.librarysystem.user.application.services;
 
-import com.cornielz.librarysystem.user.application.dto.UserResponseDTO;
-import com.cornielz.librarysystem.user.application.dto.UserSearchFilters;
-import com.cornielz.librarysystem.user.application.dto.UserCreationRequestDTO;
-import com.cornielz.librarysystem.user.application.dto.UserUpdateRequestDTO;
+import com.cornielz.librarysystem.user.application.dto.*;
 import com.cornielz.librarysystem.user.application.mapper.UserDTOMapper;
 import com.cornielz.librarysystem.user.domain.model.User;
 import com.cornielz.librarysystem.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -26,15 +24,37 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO create(UserCreationRequestDTO dto) {
-        User user = dtoMapper.toDomain(dto);
+        UUID userId = UUID.randomUUID();
+        String plainPassword = dto.password();
+        byte[] hashedPassword = hashPassword(plainPassword);
+
+        User user = dtoMapper.toDomain(dto, userId);
+        user.updatePassword(hashedPassword);
+
         repository.save(user);
+
         return dtoMapper.toResponseDTO(user);
     }
 
     @Override
-    public UserResponseDTO update(UserUpdateRequestDTO dto) {
-        User user = dtoMapper.toDomain(dto);
+    public UserResponseDTO replace(UUID id, UserReplaceRequestDTO dto) {
+        User user = repository.getById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        dtoMapper.replaceUserFromDto(dto, user);
         repository.save(user);
+
+        return dtoMapper.toResponseDTO(user);
+    }
+
+    @Override
+    public UserResponseDTO update(UUID id, UserUpdateRequestDTO dto) {
+        User user = repository.getById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        dtoMapper.updateUserFromDto(dto, user);
+        repository.save(user);
+
         return dtoMapper.toResponseDTO(user);
     }
 
