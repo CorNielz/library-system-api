@@ -109,39 +109,39 @@ public class Reservation {
 
     // Setters
 
-    public void changeUser(UUID newUserId) {
-        validateId(newUserId);
-        this.userId = newUserId;
+    public void setUserId(UUID userId) {
+        validateId(userId);
+        this.userId = userId;
     }
 
-    public void changeBook(UUID newBookId) {
-        validateId(newBookId);
-        this.bookId = newBookId;
+    public void setBookId(UUID bookId) {
+        validateId(bookId);
+        this.bookId = bookId;
     }
 
-    public void updateBorrowingDate(LocalDateTime newBorrowingDate) {
-        validateBorrowingDate(newBorrowingDate);
-        this.borrowingDate = newBorrowingDate;
+    public void setBorrowingDate(LocalDateTime borrowingDate) {
+        validateBorrowingDate(borrowingDate);
+        this.borrowingDate = borrowingDate;
     }
 
-    public void updateExpectedReturnDate(LocalDateTime newExpectedReturnDate) {
-        validateExpectedReturnDate(newExpectedReturnDate, this.borrowingDate);
-        this.expectedReturnDate = newExpectedReturnDate;
+    public void setExpectedReturnDate(LocalDateTime expectedReturnDate) {
+        validateExpectedReturnDate(expectedReturnDate, this.borrowingDate);
+        this.expectedReturnDate = expectedReturnDate;
     }
 
-    public void updateReturnDate(LocalDateTime newReturnDate) {
-        validateReturnDate(newReturnDate, this.borrowingDate);
-        this.returnDate = newReturnDate;
+    public void setReturnDate(LocalDateTime returnDate) {
+        validateReturnDate(returnDate, this.borrowingDate);
+        this.returnDate = returnDate;
     }
 
-    public void modifyAppliedPrice(BigDecimal newAppliedPrice) {
-        validateAppliedPrice(newAppliedPrice);
-        this.appliedPrice = newAppliedPrice;
+    public void setAppliedPrice(BigDecimal appliedPrice) {
+        validateAppliedPrice(appliedPrice);
+        this.appliedPrice = appliedPrice;
     }
 
-    public void updateReservationStatus(ReservationStatus newReservationStatus) {
-        validateStatus(newReservationStatus);
-        this.status = newReservationStatus;
+    public void setStatus(ReservationStatus status) {
+        validateStatus(status);
+        this.status = status;
     }
 
     // Getters

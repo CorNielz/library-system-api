@@ -165,7 +165,6 @@ Run in your IDE/Git Bash (Preferable IntelliJ)
 
 In this project, currently, no GUIs are available. Once the application is up and running, it will start a local server.
 
-
 `http://localhost:8080`
 
 All available endpoints can be accessed via the Postman Collection, which contains test/demo cases for you.
@@ -175,10 +174,10 @@ All available endpoints can be accessed via the Postman Collection, which contai
 
 # Roadmap
 Priorities and next courses of action in the development. Warning: This section is **subject to change**, some content here is optional, to make the application cleaner, while others are either essential or required by the challenge.
-1. Endpoint errors and implementations [Critical Priority]
-1. Exception Handling [Critical Priority];
-2. Logging  [High Priority];
+1. Custom Exception Return Codes and Messages [Critical Priority];
+2. Logging  [Critical Priority];
 3. Health Check [High Priority];
 4. Cross models and entity validations [Medium Priority]
-5. Authentication and Authorization with JWT and roles [Low Priority/Extra];
-6. Book tagging for better searching and organizing [Low Priority/Extra];
+5. Authentication and Authorization with JWT and roles [Low Priority];
+6. Book tagging for better searching and organizing [Low Priority];
+7. AWS integration/implementation [Low Priority]

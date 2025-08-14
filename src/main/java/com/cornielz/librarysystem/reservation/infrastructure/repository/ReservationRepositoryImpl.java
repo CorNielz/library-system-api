@@ -1,12 +1,14 @@
-package com.cornielz.librarysystem.reservation.infrastructure.persistence;
+package com.cornielz.librarysystem.reservation.infrastructure.repository;
 
+import com.cornielz.librarysystem.reservation.infrastructure.persistence.ReservationEntity;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationSearchFilters;
 import com.cornielz.librarysystem.reservation.domain.model.Reservation;
 import com.cornielz.librarysystem.reservation.domain.repository.ReservationRepository;
 import com.cornielz.librarysystem.reservation.infrastructure.mapper.ReservationEntityMapper;
-import com.cornielz.librarysystem.reservation.infrastructure.repository.ReservationJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,24 +28,21 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     }
 
     @Override
-    public List<Reservation> findAllByUserId(UUID userId) {
-        return jpaRepository.findAllByUserId(userId)
-                .stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Reservation> findAllByBookId(UUID bookId) {
-        return jpaRepository.findAllByBookId(bookId)
-                .stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Reservation> findAll() {
-        return jpaRepository.findAll()
+    public List<Reservation> findAllFiltered(ReservationSearchFilters searchFilters) {
+        return jpaRepository.findAllFiltered(
+                        searchFilters.userId(),
+                        searchFilters.bookId(),
+                        searchFilters.borrowingDateFrom(),
+                        searchFilters.borrowingDateTo(),
+                        searchFilters.expectedReturnDateFrom(),
+                        searchFilters.expectedReturnDateTo(),
+                        searchFilters.returnDateFrom(),
+                        searchFilters.returnDateTo(),
+                        searchFilters.appliedPriceMinimum(),
+                        searchFilters.appliedPriceMaximum(),
+                        searchFilters.status()
+                )
+                .orElse(new ArrayList<>())
                 .stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
@@ -51,7 +50,8 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public void save(Reservation reservation) {
-        jpaRepository.save(mapper.toEntity(reservation));
+        ReservationEntity newReservationEntity = mapper.toEntity(reservation);
+        jpaRepository.save(newReservationEntity);
     }
 
     @Override

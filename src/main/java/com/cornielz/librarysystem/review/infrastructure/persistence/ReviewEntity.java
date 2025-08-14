@@ -1,7 +1,5 @@
 package com.cornielz.librarysystem.review.infrastructure.persistence;
 
-import com.cornielz.librarysystem.book.infrastructure.persistence.BookEntity;
-import com.cornielz.librarysystem.user.infrastructure.persistence.UserEntity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -13,13 +11,11 @@ public class ReviewEntity {
     @Id
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+    @Column(name = "userId", nullable = false)
+    private UUID userId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id", nullable = false)
-    private BookEntity book;
+    @Column(name = "bookId", nullable = false)
+    private UUID bookId;
 
     @Column(length = 120, nullable = false)
     private String title;
@@ -47,22 +43,34 @@ public class ReviewEntity {
         this.lastUpdateAt = LocalDateTime.now();
     }
 
-    protected ReviewEntity() {
+    public ReviewEntity() {
 
     }
 
     // Setters
 
-    public void updateTitle(String newTitle) {
-        this.title = newTitle;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public void updateComment(String newComment) {
-        this.comment = newComment;
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
-    public void updateScore(int newScore) {
-        this.score = newScore;
+    public void setBookId(UUID bookId) {
+        this.bookId = bookId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     // Getters
@@ -72,12 +80,12 @@ public class ReviewEntity {
         return id;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public BookEntity getBook() {
-        return book;
+    public UUID getBookId() {
+        return bookId;
     }
 
     public String getTitle() {

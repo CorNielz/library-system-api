@@ -1,14 +1,20 @@
 package com.cornielz.librarysystem.book.api.controller;
 
-import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
+import com.cornielz.librarysystem.book.application.dto.BookReplaceRequestDTO;
 import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;
+import com.cornielz.librarysystem.book.application.dto.BookSearchFilters;
 import com.cornielz.librarysystem.book.application.dto.BookUpdateRequestDTO;
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
+import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
 import com.cornielz.librarysystem.book.application.services.BookService;
+import com.cornielz.librarysystem.book.domain.model.BookCondition;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,8 +31,13 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<BookResponseDTO> replaceBook(@PathVariable UUID id, @Valid @RequestBody BookReplaceRequestDTO dto) {
+        return ResponseEntity.ok(bookService.replace(id, dto));
+    }
+
+    @PatchMapping("/{id}")
     public ResponseEntity<BookResponseDTO> updateBook(@PathVariable UUID id, @Valid @RequestBody BookUpdateRequestDTO dto) {
-        return ResponseEntity.ok(bookService.update(dto));
+        return ResponseEntity.ok(bookService.update(id, dto));
     }
 
     @GetMapping("/{id}")
@@ -34,9 +45,19 @@ public class BookController {
         return ResponseEntity.ok(bookService.getById(id));
     }
 
-    @GetMapping
-    public ResponseEntity<List<BookResponseDTO>> listBooks() {
-        return ResponseEntity.ok(bookService.listAll());
+    @GetMapping()
+    public ResponseEntity<List<BookResponseDTO>> searchBooks(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String language,
+            @RequestParam(required = false) LocalDateTime publicationDateFrom,
+            @RequestParam(required = false) LocalDateTime publicationDateTo,
+            @RequestParam(required = false) BigDecimal priceMinimum,
+            @RequestParam(required = false) BigDecimal priceMaximum,
+            @RequestParam(required = false) BookCondition condition,
+            @RequestParam(required = false) BookStatus status
+    ) {
+        BookSearchFilters searchFilters = new BookSearchFilters(title, language, publicationDateFrom, publicationDateTo, priceMinimum, priceMaximum, condition, status);
+        return ResponseEntity.ok(bookService.searchWithFilters(searchFilters));
     }
 
     @DeleteMapping("/{id}")

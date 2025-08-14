@@ -81,17 +81,17 @@ public class Review {
 
     // Setters
 
-    public void updateTitle(String newTitle) {
+    public void setTitle(String newTitle) {
         validateTitle(newTitle);
         this.title = newTitle;
     }
 
-    public void updateComment(String newComment) {
+    public void setComment(String newComment) {
         validateComment(newComment);
         this.comment = newComment;
     }
 
-    public void updateScore(int newScore) {
+    public void setScore(int newScore) {
         validateScore(newScore);
         this.score = newScore;
     }

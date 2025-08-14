@@ -1,5 +1,6 @@
 package com.cornielz.librarysystem.user.infrastructure.persistence;
 
+import com.cornielz.librarysystem.user.application.dto.UserSearchFilters;
 import com.cornielz.librarysystem.user.domain.model.User;
 import com.cornielz.librarysystem.user.domain.model.UserStatus;
 import com.cornielz.librarysystem.user.domain.repository.UserRepository;
@@ -8,9 +9,11 @@ import com.cornielz.librarysystem.user.infrastructure.repository.UserJpaReposito
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -21,28 +24,33 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void save(User user) {
-        jpaRepository.save(mapper.toEntity(user));
+        UserEntity newUserEntity = mapper.toEntity(user);
+        jpaRepository.save(newUserEntity);
     }
 
     @Override
-    public Optional<User> findById(UUID id) {
+    public Optional<User> getById(UUID id) {
         return jpaRepository.findById(id).map(mapper::toDomain);
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
-        return jpaRepository.findByEmail(email).map(mapper::toDomain);
-    }
-
-    @Override
-    public List<User> findAll() {
-        return jpaRepository.findAll().stream().map(mapper::toDomain).toList();
+    public List<User> findAllFiltered(UserSearchFilters searchFilters) {
+        return jpaRepository.findAllFiltered(
+                        searchFilters.name(),
+                        searchFilters.nickname(),
+                        searchFilters.email(),
+                        searchFilters.status()
+                )
+                .orElse(new ArrayList<>())
+                .stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
     }
 
     @Override
     public void markAsDeleted(UUID id) {
         jpaRepository.findById(id).ifPresent(entity -> {
-            entity.updateStatus(UserStatus.DELETED);
+            entity.setStatus(UserStatus.DELETED);
             jpaRepository.save(entity);
         });
     }

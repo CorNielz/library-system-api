@@ -54,38 +54,42 @@ public class BookEntity {
         this.lastUpdateAt = LocalDateTime.now();
     }
 
-    protected BookEntity() {
+    public BookEntity() {
 
     }
 
     // Setters
 
-    public void rename(String newTitle) {
-        this.title = newTitle;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public void rewriteDescription(String newDescription) {
-        this.description = newDescription;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void updateLanguage(String newLanguage) {
-        this.language = newLanguage;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void updatePublicationDate(LocalDateTime newPublicationDate) {
-        this.publicationDate = newPublicationDate;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public void updatePrice(BigDecimal newPrice) {
-        this.price = newPrice;
+    public void setPublicationDate(LocalDateTime publicationDate) {
+        this.publicationDate = publicationDate;
     }
 
-    public void updateBookCondition(BookCondition newBookCondition) {
-        this.condition = newBookCondition;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public void updateBookStatus(BookStatus newBookStatus) {
-        this.status = newBookStatus;
+    public void setCondition(BookCondition condition) {
+        this.condition = condition;
+    }
+
+    public void setStatus(BookStatus status) {
+        this.status = status;
     }
 
     // Getters

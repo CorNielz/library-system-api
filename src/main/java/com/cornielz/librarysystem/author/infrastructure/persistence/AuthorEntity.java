@@ -49,24 +49,28 @@ public class AuthorEntity {
 
     // Setters
 
-    public void rename(String newName) {
-        this.name = newName;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public void rewriteBios(String newBios) {
-        this.bios = newBios;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void changeBirthDate(LocalDateTime newBirthDate) {
-        this.birthDate = newBirthDate;
+    public void setBios(String bios) {
+        this.bios = bios;
     }
 
-    public void changeNationality(String newNationality) {
-        this.nationality = newNationality;
+    public void setBirthDate(LocalDateTime birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public void updateStatus(AuthorStatus newAuthorStatus) {
-        this.status = newAuthorStatus;
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setStatus(AuthorStatus status) {
+        this.status = status;
     }
 
     // Getters
@@ -89,5 +93,9 @@ public class AuthorEntity {
 
     public String getNationality() {
         return this.nationality;
+    }
+
+    public AuthorStatus getStatus() {
+        return this.status;
     }
 }

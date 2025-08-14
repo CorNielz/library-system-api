@@ -1,12 +1,13 @@
-package com.cornielz.librarysystem.review.infrastructure.persistence;
+package com.cornielz.librarysystem.review.infrastructure.repository;
 
+import com.cornielz.librarysystem.review.application.dto.ReviewSearchFilters;
 import com.cornielz.librarysystem.review.domain.model.Review;
 import com.cornielz.librarysystem.review.domain.repository.ReviewRepository;
 import com.cornielz.librarysystem.review.infrastructure.mapper.ReviewEntityMapper;
-import com.cornielz.librarysystem.review.infrastructure.repository.ReviewJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,22 +26,16 @@ public class ReviewRepositoryImpl implements ReviewRepository {
     }
 
     @Override
-    public List<Review> findAllByUserId(UUID id) {
-        return jpaRepository.findAllByUserId(id).stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Review> findAllByBookId(UUID id) {
-        return jpaRepository.findAllByBookId(id).stream()
-                .map(mapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Review> findAll() {
-        return jpaRepository.findAll().stream()
+    public List<Review> findAllFiltered(ReviewSearchFilters searchFilters) {
+        return jpaRepository.findAllFiltered(
+                        searchFilters.userId(),
+                        searchFilters.bookId(),
+                        searchFilters.title(),
+                        searchFilters.scoreMinimum(),
+                        searchFilters.scoreMaximum()
+                )
+                .orElse(new ArrayList<>())
+                .stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }

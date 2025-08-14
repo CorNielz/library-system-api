@@ -1,10 +1,12 @@
 package com.cornielz.librarysystem.book.application.services;
 
 import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
+import com.cornielz.librarysystem.book.application.dto.BookReplaceRequestDTO;
 import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;
 import com.cornielz.librarysystem.book.application.dto.BookUpdateRequestDTO;
-import com.cornielz.librarysystem.book.application.mapper.BookDTOMapper;
 import com.cornielz.librarysystem.book.domain.model.Book;
+import com.cornielz.librarysystem.book.application.dto.BookSearchFilters;
+import com.cornielz.librarysystem.book.application.mapper.BookDTOMapper;
 import com.cornielz.librarysystem.book.domain.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,15 +27,33 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookResponseDTO create(BookCreationRequestDTO dto) {
-        Book book = dtoMapper.toDomain(dto);
+        UUID bookId = UUID.randomUUID();
+        Book book = dtoMapper.toDomain(dto, bookId);
+
         repository.save(book);
+
         return dtoMapper.toResponseDTO(book);
     }
 
     @Override
-    public BookResponseDTO update(BookUpdateRequestDTO dto) {
-        Book book = dtoMapper.toDomain(dto);
+    public BookResponseDTO replace(UUID id, BookReplaceRequestDTO dto) {
+        Book book = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
+        dtoMapper.replaceBookFromDto(dto, book);
         repository.save(book);
+
+        return dtoMapper.toResponseDTO(book);
+    }
+
+    @Override
+    public BookResponseDTO update(UUID id, BookUpdateRequestDTO dto) {
+        Book book = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
+        dtoMapper.updateBookFromDto(dto, book);
+        repository.save(book);
+
         return dtoMapper.toResponseDTO(book);
     }
 
@@ -50,11 +70,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookResponseDTO> listAll() {
-        return repository.findAll()
+    public List<BookResponseDTO> searchWithFilters(BookSearchFilters searchFilters) {
+        return repository.findAllFiltered(searchFilters)
                 .stream()
                 .map(dtoMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }
-
 }

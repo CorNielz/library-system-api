@@ -96,29 +96,29 @@ public class Author {
 
     // Setters
 
-    public void rename(String newName) {
-        validateName(newName);
-        this.name = newName;
+    public void setName(String name) {
+        validateName(name);
+        this.name = name;
     }
 
-    public void rewriteBiography(String newBiography) {
-        validateBiography(newBiography);
-        this.biography = newBiography;
+    public void setBiography(String biography) {
+        validateBiography(biography);
+        this.biography = biography;
     }
 
-    public void changeBirthDate(LocalDateTime newBirthDate) {
-        validateBirthDate(newBirthDate);
-        this.birthDate = newBirthDate;
+    public void setBirthDate(LocalDateTime birthDate) {
+        validateBirthDate(birthDate);
+        this.birthDate = birthDate;
     }
 
-    public void changeNationality(String newNationality) {
-        validateNationality(newNationality);
-        this.nationality = newNationality;
+    public void setNationality(String nationality) {
+        validateNationality(nationality);
+        this.nationality = nationality;
     }
 
-    public void updateStatus(AuthorStatus newStatus) {
-        validateStatus(newStatus);
-        this.status = newStatus;
+    public void setStatus(AuthorStatus status) {
+        validateStatus(status);
+        this.status = status;
     }
 
     // Getters

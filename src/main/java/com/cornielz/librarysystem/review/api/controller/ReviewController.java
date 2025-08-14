@@ -1,8 +1,6 @@
 package com.cornielz.librarysystem.review.api.controller;
 
-import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
-import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
-import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
+import com.cornielz.librarysystem.review.application.dto.*;
 import com.cornielz.librarysystem.review.application.services.ReviewService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +23,13 @@ public class ReviewController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<ReviewResponseDTO> replaceReview(@PathVariable UUID id, @Valid @RequestBody ReviewReplaceRequestDTO dto) {
+        return ResponseEntity.ok(reviewService.replace(id, dto));
+    }
+
+    @PatchMapping("/{id}")
     public ResponseEntity<ReviewResponseDTO> updateReview(@PathVariable UUID id, @Valid @RequestBody ReviewUpdateRequestDTO dto) {
-        return ResponseEntity.ok(reviewService.update(dto));
+        return ResponseEntity.ok(reviewService.update(id, dto));
     }
 
     @GetMapping("/{id}")
@@ -34,9 +37,16 @@ public class ReviewController {
         return ResponseEntity.ok(reviewService.getById(id));
     }
 
-    @GetMapping
-    public ResponseEntity<List<ReviewResponseDTO>> listReviews() {
-        return ResponseEntity.ok(reviewService.listAll());
+    @GetMapping()
+    public ResponseEntity<List<ReviewResponseDTO>> searchReviews(
+            @RequestParam(required = false) UUID userId,
+            @RequestParam(required = false) UUID bookId,
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) Integer scoreMinimum,
+            @RequestParam(required = false) Integer scoreMaximum
+    ) {
+        ReviewSearchFilters searchFilters = new ReviewSearchFilters(userId, bookId, title, scoreMinimum, scoreMaximum);
+        return ResponseEntity.ok(reviewService.searchWithFilters(searchFilters));
     }
 
     @DeleteMapping("/{id}")

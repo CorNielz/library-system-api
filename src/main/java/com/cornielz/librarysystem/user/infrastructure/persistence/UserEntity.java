@@ -2,7 +2,9 @@ package com.cornielz.librarysystem.user.infrastructure.persistence;
 
 import com.cornielz.librarysystem.user.domain.model.UserStatus;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 
+import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -45,30 +47,34 @@ public class UserEntity {
         this.lastUpdateAt = LocalDateTime.now();
     }
 
-    protected UserEntity() {
+    public UserEntity() {
 
     }
 
     // Setters
 
-    public void rename(String newName) {
-        this.name = newName;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public void changeNickname(String newNickname) {
-        this.nickname = newNickname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void updateEmail(String newEmail) {
-        this.email = newEmail;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public void updatePassword(byte[] newHashedPassword) {
-        this.hashedPassword = newHashedPassword;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void updateStatus(UserStatus newStatus) {
-        this.status = newStatus;
+    public void setHashedPassword(byte[] hashedPassword) {
+        this.hashedPassword = hashedPassword;
+    }
+
+    public void setStatus(UserStatus status) {
+        this.status = status;
     }
 
     // Getters
