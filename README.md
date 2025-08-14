@@ -39,7 +39,7 @@ Born from a coding challenge, this project is a back-end RESTFUL API for a CRUD 
 Users should be allowed to, but not limited to:
 
 ### Books
-* Search and list books by title and/or author;
+* Search and list books by title, language, price, condition, status and/or other fields;
 * Register books;
 * Update book information;
 * Soft delete books;
@@ -174,10 +174,11 @@ All available endpoints can be accessed via the Postman Collection, which contai
 
 # Roadmap
 Priorities and next courses of action in the development. Warning: This section is **subject to change**, some content here is optional, to make the application cleaner, while others are either essential or required by the challenge.
-1. Custom Exception Return Codes and Messages [Critical Priority];
+1. Security, timeout and rate limit [Critical Priority];
 2. Logging  [Critical Priority];
-3. Health Check [High Priority];
-4. Cross models and entity validations [Medium Priority]
-5. Authentication and Authorization with JWT and roles [Low Priority];
-6. Book tagging for better searching and organizing [Low Priority];
-7. AWS integration/implementation [Low Priority]
+3. Custom Return Codes and Exception Messages [High Priority];
+4. Health Check [High Priority];
+5. Cross models and entity validations [Medium Priority]
+6. Authentication and Authorization with JWT and roles [Low Priority];
+7. Book tagging for better searching and organizing [Low Priority];
+8. AWS integration/implementation [Low Priority]
