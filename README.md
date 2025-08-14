@@ -107,7 +107,7 @@ PostgreSQL was chosen due to being a relational database, with great AWS integra
 
 
 ## Database Schema
-[Current ER Diagram](https://github.com/CorNielz/library-system-api/blob/feature/docs/docs/ER%20Diagram_Online%20Library%20API.pdf).
+[Current ER Diagram]([https://github.com/CorNielz/library-system-api/blob/feature/docs/docs/ER%20Diagram_Online%20Library%20API.pdf](https://github.com/CorNielz/library-system-api/blob/main/docs/ER%20Diagram_Online%20Library%20API.pdf)).
 
 
 
@@ -134,7 +134,7 @@ Run in your IDE/Git Bash (Preferable IntelliJ)
 
 ### 2. Get SQL File
 
-Download ER file: [LibrarySystem_ER.sql](https://github.com/CorNielz/library-system-api/blob/feature/docs/docs/LibrarySystem_ER.sql)
+Download ER file: [LibrarySystem_ER.sql](https://github.com/CorNielz/library-system-api/blob/main/docs/LibrarySystem_ER.sql)
 
 ### 3. Configure the DB
 
@@ -156,10 +156,8 @@ Run in your IDE/Terminal (Preferable IntelliJ)
 
 ### 1. Run Application
 
-Run in your IDE/Git Bash (Preferable IntelliJ)
+Run the file LibrarySystemApplication.java in your IDE/Git Bash (Preferable IntelliJ)
 
-
-`mvn spring-boot:run`
 
 ### 2. Usage
 
@@ -168,6 +166,7 @@ In this project, currently, no GUIs are available. Once the application is up an
 `http://localhost:8080`
 
 All available endpoints can be accessed via the Postman Collection, which contains test/demo cases for you.
+OBS: You can insert already created entity IDs into you environment tab to keep values consistent through the endpoints test, if you wish.
 
 # Postman Collection
 [LibraryCollection](https://www.postman.com/dashcornielz/workspace/library-system/collection/29982401-a6679a31-5665-47ac-be94-1ca670e3a767?action=share&source=copy-link&creator=29982401)
