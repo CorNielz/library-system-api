@@ -109,29 +109,29 @@ public class User {
 
     // Setters
 
-    public void rename(String newName) {
-        validateName(newName);
-        this.name = newName;
+    public void setName(String name) {
+        validateName(name);
+        this.name = name;
     }
 
-    public void changeNickname(String newNickname) {
-        validateNickname(newNickname);
-        this.nickname = newNickname;
+    public void setNickname(String nickname) {
+        validateNickname(nickname);
+        this.nickname = nickname;
     }
 
-    public void updateEmail(String newEmail) {
-        validateEmail(newEmail);
-        this.email = newEmail;
+    public void setEmail(String email) {
+        validateEmail(email);
+        this.email = email;
     }
 
-    public void updatePassword(byte[] newHashedPassword) {
-        validateHashedPassword(newHashedPassword);
-        this.hashedPassword = newHashedPassword;
+    public void setHashedPassword(byte[] hashedPassword) {
+        validateHashedPassword(hashedPassword);
+        this.hashedPassword = hashedPassword;
     }
 
-    public void updateStatus(UserStatus newStatus) {
-        validateStatus(newStatus);
-        this.status = newStatus;
+    public void setStatus(UserStatus status) {
+        validateStatus(status);
+        this.status = status;
     }
 
     // Getters

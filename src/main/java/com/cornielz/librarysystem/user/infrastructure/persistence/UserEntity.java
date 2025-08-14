@@ -27,8 +27,7 @@ public class UserEntity {
     private byte[] hashedPassword;
 
     @Enumerated(EnumType.STRING)
-    @JdbcTypeCode(Types.VARCHAR)
-    @Column(nullable = false, columnDefinition = "user_status")
+    @Column(nullable = false)
     private UserStatus status;
 
     @Column(name = "created_at", nullable = false, updatable = false)

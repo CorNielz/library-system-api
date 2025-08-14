@@ -12,10 +12,10 @@ import java.util.UUID;
 
 public interface UserJpaRepository extends JpaRepository<UserEntity, UUID> {
     @Query("SELECT user FROM UserEntity user WHERE " +
-            "(:name IS NULL OR LOWER(user.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
-            "(:nickname IS NULL OR LOWER(user.nickname) LIKE LOWER(CONCAT('%', :nickname, '%'))) AND " +
-            "(:email IS NULL OR LOWER(user.email) LIKE LOWER(CONCAT('%', :email, '%'))) AND " +
-            "(:status IS NULL OR user.status = :status)")
+            "(LOWER(user.name) LIKE LOWER(CONCAT('%', :name, '%')) OR :name IS NULL) AND " +
+            "(LOWER(user.nickname) LIKE LOWER(CONCAT('%', :nickname, '%')) OR :nickname IS NULL) AND " +
+            "(LOWER(user.email) LIKE LOWER(CONCAT('%', :email, '%')) OR :email IS NULL) AND " +
+            "(:status IS NULL OR CAST(user.status AS string) = CAST(:status AS string))")
     Optional<List<UserEntity>> findAllFiltered(
             @Param("name") String name,
             @Param("nickname") String nickname,

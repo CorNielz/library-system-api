@@ -46,7 +46,7 @@ public class ReviewController {
         ReviewSearchFilters searchFilters = new ReviewSearchFilters(userId, bookId, title, scoreMinimum, scoreMaximum);
         return ResponseEntity.ok(reviewService.searchWithFilters(searchFilters));
     }
-    
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReview(@PathVariable UUID id) {
         reviewService.delete(id);
