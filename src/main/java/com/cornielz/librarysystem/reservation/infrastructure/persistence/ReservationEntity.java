@@ -1,8 +1,6 @@
 package com.cornielz.librarysystem.reservation.infrastructure.persistence;
 
-import com.cornielz.librarysystem.book.infrastructure.persistence.BookEntity;
 import com.cornielz.librarysystem.reservation.domain.model.ReservationStatus;
-import com.cornielz.librarysystem.user.infrastructure.persistence.UserEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -15,13 +13,11 @@ public class ReservationEntity {
     @Id
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+    @Column(name = "user_id", nullable = false)
+    private UUID userId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id", nullable = false)
-    private BookEntity book;
+    @Column(name = "book_id", nullable = false)
+    private UUID bookId;
 
     @Column(name = "borrowing_date")
     private LocalDateTime borrowingDate;
@@ -62,32 +58,36 @@ public class ReservationEntity {
 
     // Setters
 
-    public void changeUser(UserEntity newUser) {
-        this.user = newUser;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public void changeBook(BookEntity newBook) {
-        this.book = newBook;
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
-    public void updateBorrowingDate(LocalDateTime newBorrowingDate) {
-        this.borrowingDate = newBorrowingDate;
+    public void setBookId(UUID bookId) {
+        this.bookId = bookId;
     }
 
-    public void updateExpectedReturnDate(LocalDateTime newExpectedReturnDate) {
-        this.expectedReturnDate = newExpectedReturnDate;
+    public void setBorrowingDate(LocalDateTime borrowingDate) {
+        this.borrowingDate = borrowingDate;
     }
 
-    public void updateReturnDate(LocalDateTime newReturnDate) {
-        this.returnDate = newReturnDate;
+    public void setExpectedReturnDate(LocalDateTime expectedReturnDate) {
+        this.expectedReturnDate = expectedReturnDate;
     }
 
-    public void modifyAppliedPrice(BigDecimal newAppliedPrice) {
-        this.appliedPrice = newAppliedPrice;
+    public void setReturnDate(LocalDateTime returnDate) {
+        this.returnDate = returnDate;
     }
 
-    public void updateReservationStatus(ReservationStatus newReservationStatus) {
-        this.status = newReservationStatus;
+    public void setAppliedPrice(BigDecimal appliedPrice) {
+        this.appliedPrice = appliedPrice;
+    }
+
+    public void setStatus(ReservationStatus status) {
+        this.status = status;
     }
 
     // Getters
@@ -96,12 +96,12 @@ public class ReservationEntity {
         return id;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public BookEntity getBook() {
-        return book;
+    public UUID getBookId() {
+        return bookId;
     }
 
     public LocalDateTime getBorrowingDate() {

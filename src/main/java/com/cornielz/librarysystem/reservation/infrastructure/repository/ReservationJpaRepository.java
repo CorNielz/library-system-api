@@ -15,17 +15,17 @@ import java.util.UUID;
 
 public interface ReservationJpaRepository extends JpaRepository<ReservationEntity, UUID> {
     @Query("SELECT reservation FROM ReservationEntity reservation WHERE " +
-            "(:userId IS NULL OR reservation.user.id = :userId) AND " +
-            "(:bookId IS NULL OR reservation.book.id = :bookId) AND " +
-            "(:borrowingDateFrom IS NULL OR reservation.borrowingDate >= :borrowingDateFrom) AND " +
-            "(:borrowingDateTo IS NULL OR reservation.borrowingDate <= :borrowingDateTo) AND " +
-            "(:expectedReturnDateFrom IS NULL OR reservation.expectedReturnDate >= :expectedReturnDateFrom) AND " +
-            "(:expectedReturnDateTo IS NULL OR reservation.expectedReturnDate <= :expectedReturnDateTo) AND " +
-            "(:returnDateFrom IS NULL OR reservation.returnDate >= :returnDateFrom) AND " +
-            "(:returnDateTo IS NULL OR reservation.returnDate <= :returnDateTo) AND " +
-            "(:appliedPriceMinimum IS NULL OR reservation.appliedPrice >= :appliedPriceMinimum) AND " +
-            "(:appliedPriceMaximum IS NULL OR reservation.appliedPrice <= :appliedPriceMaximum) AND " +
-            "(:status IS NULL OR reservation.status = :status)")
+            "(reservation.userId = :userId OR :userId IS NULL) AND " +
+            "(reservation.bookId = :bookId OR :bookId IS NULL) AND " +
+            "(reservation.borrowingDate >= :borrowingDateFrom OR CAST(:borrowingDateFrom AS date) IS NULL) AND " +
+            "(reservation.borrowingDate <= :borrowingDateTo OR CAST(:borrowingDateTo AS date) IS NULL) AND " +
+            "(reservation.expectedReturnDate >= :expectedReturnDateFrom OR CAST(:expectedReturnDateFrom AS date) IS NULL) AND " +
+            "(reservation.expectedReturnDate <= :expectedReturnDateTo OR CAST(:expectedReturnDateTo AS date) IS NULL) AND " +
+            "(reservation.returnDate >= :returnDateFrom OR CAST(:returnDateFrom AS date) IS NULL) AND " +
+            "(reservation.returnDate <= :returnDateTo OR CAST(:returnDateTo AS date) IS NULL) AND " +
+            "(reservation.appliedPrice >= :appliedPriceMinimum OR :appliedPriceMinimum IS NULL) AND " +
+            "(reservation.appliedPrice <= :appliedPriceMaximum OR :appliedPriceMaximum IS NULL) AND " +
+            "(CAST(reservation.status AS string) = CAST(:status AS string) OR :status IS NULL)")
     Optional<List<ReservationEntity>> findAllFiltered(
             @Param("userId") UUID userId,
             @Param("bookId") UUID bookId,

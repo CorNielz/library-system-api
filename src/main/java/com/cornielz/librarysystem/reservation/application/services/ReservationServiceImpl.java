@@ -1,11 +1,12 @@
 package com.cornielz.librarysystem.reservation.application.services;
 
-import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
-import com.cornielz.librarysystem.reservation.application.dto.ReservationSearchFilters;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationReplaceRequestDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
-import com.cornielz.librarysystem.reservation.application.mapper.ReservationDTOMapper;
 import com.cornielz.librarysystem.reservation.domain.model.Reservation;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationSearchFilters;
+import com.cornielz.librarysystem.reservation.application.mapper.ReservationDTOMapper;
 import com.cornielz.librarysystem.reservation.domain.repository.ReservationRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,15 +27,33 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationResponseDTO create(ReservationCreationRequestDTO dto) {
-        Reservation reservation = dtoMapper.toDomain(dto);
+        UUID reservationId = UUID.randomUUID();
+        Reservation reservation = dtoMapper.toDomain(dto, reservationId);
+
         repository.save(reservation);
+
         return dtoMapper.toResponseDTO(reservation);
     }
 
     @Override
-    public ReservationResponseDTO update(ReservationUpdateRequestDTO dto) {
-        Reservation reservation = dtoMapper.toDomain(dto);
+    public ReservationResponseDTO replace(UUID id, ReservationReplaceRequestDTO dto) {
+        Reservation reservation = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reservation not found"));
+
+        dtoMapper.replaceReservationFromDto(dto, reservation);
         repository.save(reservation);
+
+        return dtoMapper.toResponseDTO(reservation);
+    }
+
+    @Override
+    public ReservationResponseDTO update(UUID id, ReservationUpdateRequestDTO dto) {
+        Reservation reservation = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reservation not found"));
+
+        dtoMapper.updateReservationFromDto(dto, reservation);
+        repository.save(reservation);
+
         return dtoMapper.toResponseDTO(reservation);
     }
 

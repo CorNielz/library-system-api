@@ -1,10 +1,11 @@
 package com.cornielz.librarysystem.reservation.api.controller;
 
+import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationReplaceRequestDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationResponseDTO;
+import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
 import com.cornielz.librarysystem.reservation.application.dto.ReservationSearchFilters;
 import com.cornielz.librarysystem.reservation.domain.model.ReservationStatus;
-import com.cornielz.librarysystem.reservation.application.dto.ReservationCreationRequestDTO;
-import com.cornielz.librarysystem.reservation.application.dto.ReservationUpdateRequestDTO;
 import com.cornielz.librarysystem.reservation.application.services.ReservationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,13 @@ public class ReservationController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<ReservationResponseDTO> replaceReservation(@PathVariable UUID id, @Valid @RequestBody ReservationReplaceRequestDTO dto) {
+        return ResponseEntity.ok(reservationService.replace(id, dto));
+    }
+
+    @PatchMapping("/{id}")
     public ResponseEntity<ReservationResponseDTO> updateReservation(@PathVariable UUID id, @Valid @RequestBody ReservationUpdateRequestDTO dto) {
-        return ResponseEntity.ok(reservationService.update(dto));
+        return ResponseEntity.ok(reservationService.update(id, dto));
     }
 
     @GetMapping("/{id}")
@@ -41,7 +47,7 @@ public class ReservationController {
     @GetMapping()
     public ResponseEntity<List<ReservationResponseDTO>> searchReservations(
             @RequestParam(required = false) UUID userId,
-            @RequestParam(required = false) UUID bookId,
+            @RequestParam(required = false) UUID reservationId,
             @RequestParam(required = false) LocalDateTime borrowingDateFrom,
             @RequestParam(required = false) LocalDateTime borrowingDateTo,
             @RequestParam(required = false) LocalDateTime expectedReturnDateFrom,
@@ -52,7 +58,7 @@ public class ReservationController {
             @RequestParam(required = false) BigDecimal appliedPriceMaximum,
             @RequestParam(required = false) ReservationStatus status
     ) {
-        ReservationSearchFilters searchFilters = new ReservationSearchFilters(userId, bookId, borrowingDateFrom, borrowingDateTo, expectedReturnDateFrom, expectedReturnDateTo, returnDateFrom, returnDateTo, appliedPriceMinimum, appliedPriceMaximum, status);
+        ReservationSearchFilters searchFilters = new ReservationSearchFilters(userId, reservationId, borrowingDateFrom, borrowingDateTo, expectedReturnDateFrom, expectedReturnDateTo, returnDateFrom, returnDateTo, appliedPriceMinimum, appliedPriceMaximum, status);
         return ResponseEntity.ok(reservationService.searchWithFilters(searchFilters));
     }
 
