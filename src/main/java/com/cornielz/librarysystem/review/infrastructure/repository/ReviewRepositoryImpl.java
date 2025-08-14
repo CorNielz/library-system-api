@@ -1,10 +1,9 @@
-package com.cornielz.librarysystem.review.infrastructure.persistence;
+package com.cornielz.librarysystem.review.infrastructure.repository;
 
 import com.cornielz.librarysystem.review.application.dto.ReviewSearchFilters;
 import com.cornielz.librarysystem.review.domain.model.Review;
 import com.cornielz.librarysystem.review.domain.repository.ReviewRepository;
 import com.cornielz.librarysystem.review.infrastructure.mapper.ReviewEntityMapper;
-import com.cornielz.librarysystem.review.infrastructure.repository.ReviewJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

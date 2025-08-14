@@ -1,9 +1,6 @@
 package com.cornielz.librarysystem.review.api.controller;
 
-import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
-import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
-import com.cornielz.librarysystem.review.application.dto.ReviewSearchFilters;
-import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
+import com.cornielz.librarysystem.review.application.dto.*;
 import com.cornielz.librarysystem.review.application.services.ReviewService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +23,13 @@ public class ReviewController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<ReviewResponseDTO> replaceReview(@PathVariable UUID id, @Valid @RequestBody ReviewReplaceRequestDTO dto) {
+        return ResponseEntity.ok(reviewService.replace(id, dto));
+    }
+
+    @PatchMapping("/{id}")
     public ResponseEntity<ReviewResponseDTO> updateReview(@PathVariable UUID id, @Valid @RequestBody ReviewUpdateRequestDTO dto) {
-        return ResponseEntity.ok(reviewService.update(dto));
+        return ResponseEntity.ok(reviewService.update(id, dto));
     }
 
     @GetMapping("/{id}")

@@ -1,9 +1,6 @@
 package com.cornielz.librarysystem.review.application.services;
 
-import com.cornielz.librarysystem.review.application.dto.ReviewResponseDTO;
-import com.cornielz.librarysystem.review.application.dto.ReviewSearchFilters;
-import com.cornielz.librarysystem.review.application.dto.ReviewCreationRequestDTO;
-import com.cornielz.librarysystem.review.application.dto.ReviewUpdateRequestDTO;
+import com.cornielz.librarysystem.review.application.dto.*;
 import com.cornielz.librarysystem.review.application.mapper.ReviewDTOMapper;
 import com.cornielz.librarysystem.review.domain.model.Review;
 import com.cornielz.librarysystem.review.domain.repository.ReviewRepository;
@@ -26,15 +23,33 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public ReviewResponseDTO create(ReviewCreationRequestDTO dto) {
-        Review review = dtoMapper.toDomain(dto);
+        UUID reviewId = UUID.randomUUID();
+        Review review = dtoMapper.toDomain(dto, reviewId);
+
         repository.save(review);
+
         return dtoMapper.toResponseDTO(review);
     }
 
     @Override
-    public ReviewResponseDTO update(ReviewUpdateRequestDTO dto) {
-        Review review = dtoMapper.toDomain(dto);
+    public ReviewResponseDTO replace(UUID id, ReviewReplaceRequestDTO dto) {
+        Review review = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Review not found"));
+
+        dtoMapper.replaceReviewFromDto(dto, review);
         repository.save(review);
+
+        return dtoMapper.toResponseDTO(review);
+    }
+
+    @Override
+    public ReviewResponseDTO update(UUID id, ReviewUpdateRequestDTO dto) {
+        Review review = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Review not found"));
+
+        dtoMapper.updateReviewFromDto(dto, review);
+        repository.save(review);
+
         return dtoMapper.toResponseDTO(review);
     }
 
