@@ -44,7 +44,7 @@ CREATE TYPE "reservation_status" AS ENUM (
 
 CREATE TABLE "users" (
   "id" uuid PRIMARY KEY NOT NULL,
-  "name" varchar(100) UNIQUE NOT NULL,
+  "name" varchar(100) NOT NULL,
   "nickname" varchar(32) NOT NULL,
   "email" varchar(254) UNIQUE NOT NULL,
   "hashed_password" bytea NOT NULL,
