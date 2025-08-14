@@ -6,6 +6,6 @@ public record ReviewSearchFilters(
         UUID userId,
         UUID bookId,
         String title,
-        int scoreMinimum,
-        int scoreMaximum
+        Integer scoreMinimum,
+        Integer scoreMaximum
 ) {}

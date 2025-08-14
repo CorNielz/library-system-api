@@ -11,8 +11,8 @@ import java.util.UUID;
 
 public interface ReviewJpaRepository extends JpaRepository<ReviewEntity, UUID> {
     @Query("SELECT review FROM ReviewEntity review WHERE " +
-            "(review.user.id = :userId OR :userId IS NULL) AND " +
-            "(review.book.id = :bookId OR :bookId IS NULL) AND " +
+            "(review.userId = :userId OR :userId IS NULL) AND " +
+            "(review.bookId = :bookId OR :bookId IS NULL) AND " +
             "(LOWER(review.title) LIKE LOWER(CONCAT('%', :title, '%')) OR :title IS NULL) AND " +
             "(review.score >= :scoreMinimum OR :scoreMinimum IS NULL) AND " +
             "(review.score <= :scoreMaximum OR :scoreMaximum IS NULL)")
@@ -20,7 +20,7 @@ public interface ReviewJpaRepository extends JpaRepository<ReviewEntity, UUID> {
             @Param("userId") UUID userId,
             @Param("bookId") UUID bookId,
             @Param("title") String title,
-            @Param("scoreMinimum") int scoreMinimum,
-            @Param("scoreMaximum") int scoreMaximum
+            @Param("scoreMinimum") Integer scoreMinimum,
+            @Param("scoreMaximum") Integer scoreMaximum
     );
 }

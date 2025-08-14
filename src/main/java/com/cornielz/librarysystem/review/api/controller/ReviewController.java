@@ -42,8 +42,8 @@ public class ReviewController {
             @RequestParam(required = false) UUID userId,
             @RequestParam(required = false) UUID bookId,
             @RequestParam(required = false) String title,
-            @RequestParam(required = false) int scoreMinimum,
-            @RequestParam(required = false) int scoreMaximum
+            @RequestParam(required = false) Integer scoreMinimum,
+            @RequestParam(required = false) Integer scoreMaximum
     ) {
         ReviewSearchFilters searchFilters = new ReviewSearchFilters(userId, bookId, title, scoreMinimum, scoreMaximum);
         return ResponseEntity.ok(reviewService.searchWithFilters(searchFilters));
