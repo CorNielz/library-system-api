@@ -3,10 +3,11 @@ package com.cornielz.librarysystem.author.application.services;
 import com.cornielz.librarysystem.author.application.dto.AuthorCreationRequestDTO;
 import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
 import com.cornielz.librarysystem.author.application.dto.AuthorSearchFilters;
-import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 import com.cornielz.librarysystem.author.application.mapper.AuthorDTOMapper;
 import com.cornielz.librarysystem.author.domain.model.Author;
 import com.cornielz.librarysystem.author.domain.repository.AuthorRepository;
+import com.cornielz.librarysystem.author.application.dto.AuthorReplaceRequestDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,15 +27,34 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorResponseDTO create(AuthorCreationRequestDTO dto) {
-        Author author = dtoMapper.toDomain(dto);
+        UUID authorId = UUID.randomUUID();
+
+        Author author = dtoMapper.toDomain(dto, authorId);
+
         repository.save(author);
+
         return dtoMapper.toResponseDTO(author);
     }
 
     @Override
-    public AuthorResponseDTO update(AuthorUpdateRequestDTO dto) {
-        Author author = dtoMapper.toDomain(dto);
+    public AuthorResponseDTO replace(UUID id, AuthorReplaceRequestDTO dto) {
+        Author author = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found"));
+
+        dtoMapper.replaceAuthorFromDto(dto, author);
         repository.save(author);
+
+        return dtoMapper.toResponseDTO(author);
+    }
+
+    @Override
+    public AuthorResponseDTO update(UUID id, AuthorUpdateRequestDTO dto) {
+        Author author = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found"));
+
+        dtoMapper.updateAuthorFromDto(dto, author);
+        repository.save(author);
+
         return dtoMapper.toResponseDTO(author);
     }
 

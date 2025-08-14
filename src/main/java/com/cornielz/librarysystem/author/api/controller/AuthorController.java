@@ -7,13 +7,14 @@ import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 import com.cornielz.librarysystem.author.application.services.AuthorService;
 
 import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
+import com.cornielz.librarysystem.author.application.dto.AuthorReplaceRequestDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
+import com.cornielz.librarysystem.author.application.dto.AuthorUpdateRequestDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -31,8 +32,13 @@ public class AuthorController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<AuthorResponseDTO> replaceAuthor(@PathVariable UUID id, @Valid @RequestBody AuthorReplaceRequestDTO dto) {
+        return ResponseEntity.ok(authorService.replace(id, dto));
+    }
+
+    @PatchMapping("/{id}")
     public ResponseEntity<AuthorResponseDTO> updateAuthor(@PathVariable UUID id, @Valid @RequestBody AuthorUpdateRequestDTO dto) {
-        return ResponseEntity.ok(authorService.update(dto));
+        return ResponseEntity.ok(authorService.update(id, dto));
     }
 
     @GetMapping("/{id}")

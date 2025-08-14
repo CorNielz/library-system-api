@@ -5,6 +5,7 @@ import com.cornielz.librarysystem.author.domain.model.Author;
 import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
 import com.cornielz.librarysystem.author.domain.repository.AuthorRepository;
 import com.cornielz.librarysystem.author.infrastructure.mapper.AuthorEntityMapper;
+import com.cornielz.librarysystem.author.infrastructure.persistence.AuthorEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -44,13 +45,14 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public void save(Author author) {
-        jpaRepository.save(mapper.toEntity(author));
+        AuthorEntity newAuthorEntity = mapper.toEntity(author);
+        jpaRepository.save(newAuthorEntity);
     }
 
     @Override
     public void markAsDeleted(UUID id) {
         jpaRepository.findById(id).ifPresent(entity -> {
-            entity.updateStatus(AuthorStatus.DELETED);
+            entity.setStatus(AuthorStatus.DELETED);
             jpaRepository.save(entity);
         });
     }
