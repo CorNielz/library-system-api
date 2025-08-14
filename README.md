@@ -39,7 +39,7 @@ Born from a coding challenge, this project is a back-end RESTFUL API for a CRUD 
 Users should be allowed to, but not limited to:
 
 ### Books
-* Search and list books by title and/or author;
+* Search and list books by title, language, price, condition, status and/or other fields;
 * Register books;
 * Update book information;
 * Soft delete books;
