@@ -16,14 +16,14 @@ import java.util.UUID;
 
 public interface BookJpaRepository extends JpaRepository<BookEntity, UUID> {
     @Query("SELECT book FROM BookEntity book WHERE " +
-            "(:title IS NULL OR LOWER(book.title) LIKE LOWER(CONCAT('%', :title, '%'))) AND " +
-            "(:language IS NULL OR book.language = :language) AND " +
-            "(:publicationDateFrom IS NULL OR book.publicationDate >= :publicationDateFrom) AND " +
-            "(:publicationDateTo IS NULL OR book.publicationDate <= :publicationDateTo) AND " +
-            "(:priceMinimum IS NULL OR book.price >= :priceMinimum) AND " +
-            "(:priceMaximum IS NULL OR book.price <= :priceMaximum) AND " +
-            "(:condition IS NULL OR book.condition = :condition) AND " +
-            "(:status IS NULL OR book.status = :status)")
+            "(LOWER(book.title) LIKE LOWER(CONCAT('%', :title, '%')) OR :title IS NULL) AND " +
+            "(book.language = :language OR :language IS NULL) AND " +
+            "(book.publicationDate >= :publicationDateFrom OR CAST(:publicationDateFrom AS date) IS NULL) AND " +
+            "(book.publicationDate <= :publicationDateTo OR CAST(:publicationDateTo AS date) IS NULL) AND " +
+            "(book.price >= :priceMinimum OR :priceMinimum IS NULL) AND " +
+            "(book.price <= :priceMaximum OR :priceMaximum IS NULL) AND " +
+            "(CAST(book.condition AS string) = CAST(:condition AS string) OR :condition IS NULL) AND " +
+            "(CAST(book.status AS string) = CAST(:status AS string) OR :status IS NULL)")
     Optional<List<BookEntity>> findAllFiltered(
             @Param("title") String title,
             @Param("language") String language,

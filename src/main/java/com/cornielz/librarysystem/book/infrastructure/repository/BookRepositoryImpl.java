@@ -1,12 +1,11 @@
 package com.cornielz.librarysystem.book.infrastructure.repository;
 
-import com.cornielz.librarysystem.author.application.dto.AuthorSearchFilters;
-import com.cornielz.librarysystem.author.domain.model.Author;
 import com.cornielz.librarysystem.book.application.dto.BookSearchFilters;
 import com.cornielz.librarysystem.book.domain.model.Book;
 import com.cornielz.librarysystem.book.domain.model.BookStatus;
 import com.cornielz.librarysystem.book.domain.repository.BookRepository;
 import com.cornielz.librarysystem.book.infrastructure.mapper.BookEntityMapper;
+import com.cornielz.librarysystem.book.infrastructure.persistence.BookEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -49,13 +48,14 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public void save(Book book) {
-        jpaRepository.save(mapper.toEntity(book));
+        BookEntity newBookEntity = mapper.toEntity(book);
+        jpaRepository.save(newBookEntity);
     }
 
     @Override
     public void markAsDeleted(UUID id) {
         jpaRepository.findById(id).ifPresent(entity -> {
-            entity.updateBookStatus(BookStatus.DELETED);
+            entity.setStatus(BookStatus.DELETED);
             jpaRepository.save(entity);
         });
     }

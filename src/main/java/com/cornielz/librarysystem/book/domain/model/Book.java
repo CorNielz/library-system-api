@@ -135,39 +135,39 @@ public class Book {
 
     // Setters
 
-    public void rename(String newTitle) {
-        validateTitle(newTitle);
-        this.title = newTitle;
+    public void setTitle(String title) {
+        validateTitle(title);
+        this.title = title;
     }
 
-    public void rewriteDescription(String newDescription) {
-        validateDescription(newDescription);
-        this.description = newDescription;
+    public void setDescription(String description) {
+        validateDescription(description);
+        this.description = description;
     }
 
-    public void updateLanguage(String newLanguage) {
-        validateLanguage(newLanguage);
-        this.language = newLanguage;
+    public void setLanguage(String language) {
+        validateLanguage(language);
+        this.language = language;
     }
 
-    public void updatePublicationDate(LocalDateTime newPublicationDate) {
-        validatePublicationDate(newPublicationDate);
-        this.publicationDate = newPublicationDate;
+    public void setPublicationDate(LocalDateTime publicationDate) {
+        validatePublicationDate(publicationDate);
+        this.publicationDate = publicationDate;
     }
 
-    public void updatePrice(BigDecimal newPrice) {
-        validatePrice(newPrice);
-        this.price = newPrice;
+    public void setPrice(BigDecimal price) {
+        validatePrice(price);
+        this.price = price;
     }
 
-    public void updateBookCondition(BookCondition newBookCondition) {
-        validateCondition(newBookCondition);
-        this.condition = newBookCondition;
+    public void setBookCondition(BookCondition condition) {
+        validateCondition(condition);
+        this.condition = condition;
     }
 
-    public void updateBookStatus(BookStatus newBookStatus) {
-        validateStatus(newBookStatus);
-        this.status = newBookStatus;
+    public void setStatus(BookStatus status) {
+        validateStatus(status);
+        this.status = status;
     }
 
     // Getters

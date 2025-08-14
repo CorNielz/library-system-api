@@ -1,15 +1,13 @@
 package com.cornielz.librarysystem.book.api.controller;
 
-import com.cornielz.librarysystem.author.application.dto.AuthorResponseDTO;
-import com.cornielz.librarysystem.author.application.dto.AuthorSearchFilters;
-import com.cornielz.librarysystem.author.domain.model.AuthorStatus;
-import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
+import com.cornielz.librarysystem.book.application.dto.BookReplaceRequestDTO;
 import com.cornielz.librarysystem.book.application.dto.BookResponseDTO;
 import com.cornielz.librarysystem.book.application.dto.BookSearchFilters;
 import com.cornielz.librarysystem.book.application.dto.BookUpdateRequestDTO;
+import com.cornielz.librarysystem.book.domain.model.BookStatus;
+import com.cornielz.librarysystem.book.application.dto.BookCreationRequestDTO;
 import com.cornielz.librarysystem.book.application.services.BookService;
 import com.cornielz.librarysystem.book.domain.model.BookCondition;
-import com.cornielz.librarysystem.book.domain.model.BookStatus;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +31,13 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<BookResponseDTO> replaceBook(@PathVariable UUID id, @Valid @RequestBody BookReplaceRequestDTO dto) {
+        return ResponseEntity.ok(bookService.replace(id, dto));
+    }
+
+    @PatchMapping("/{id}")
     public ResponseEntity<BookResponseDTO> updateBook(@PathVariable UUID id, @Valid @RequestBody BookUpdateRequestDTO dto) {
-        return ResponseEntity.ok(bookService.update(dto));
+        return ResponseEntity.ok(bookService.update(id, dto));
     }
 
     @GetMapping("/{id}")
